@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,49 +6,102 @@
   <title>Sambina Islam | Computational Genomics</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-dark: #0d1b2a;
+      --bg-accent: #1b263b;
+      --text-main: #e0e6ed;
+      --text-accent: #a8dadc;
+      --link-hover: #f4a261;
+    }
+
     body {
       margin: 0;
       font-family: 'Raleway', sans-serif;
-      background: #f8fbff;
-      color: #333;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
     }
+
     header {
-      background: linear-gradient(120deg, #cce3ff, #e3f0ff);
-      padding: 3rem 1rem;
+      background: linear-gradient(120deg, #1b263b, #2a3d5f);
+      padding: 3rem 1rem 4rem;
       text-align: center;
       position: relative;
     }
+
     .dna {
       position: absolute;
-      right: 10px;
-      top: 10px;
+      right: 20px;
+      top: 20px;
       width: 80px;
-      opacity: 0.4;
+      opacity: 0.25;
+      filter: invert(90%);
     }
+
     h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #f1faee;
     }
+
+    header p {
+      font-size: 1.2rem;
+      color: var(--text-accent);
+    }
+
     nav {
       margin: 2rem auto;
       text-align: center;
     }
+
     nav a {
-      margin: 0 1rem;
+      margin: 0 1.5rem;
       text-decoration: none;
-      color: #0454a4;
+      color: var(--text-accent);
       font-weight: 600;
+      transition: color 0.3s ease;
     }
+
+    nav a:hover {
+      color: var(--link-hover);
+    }
+
     section {
       max-width: 800px;
       margin: 2rem auto;
       padding: 0 1rem;
+      background-color: var(--bg-accent);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
     }
+
+    section h2 {
+      font-size: 1.5rem;
+      color: #f1faee;
+      margin-top: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    a {
+      color: var(--text-accent);
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
-      color: #777;
+      color: #94a3b8;
     }
   </style>
 </head>
@@ -80,9 +132,7 @@
   <h2>Research & Projects</h2>
   <ul>
     <li>🧬 Fiber-seq Variant Accessibility Prediction Pipeline</li>
-    <li>📊 MPRA Effect Prediction Using TF Motif Shifts</li>
-    <li>🧠 Deep learning for CAD variant interpretation @ Kundaje Lab (planned)</li>
-    <li><a href="https://github.com/YOUR_GITHUB">GitHub →</a></li>
+    <!-- Add more projects as needed -->
   </ul>
 </section>
 
@@ -96,7 +146,7 @@
 <section id="contact">
   <h2>Contact</h2>
   <p>Email: sambina@email.com</p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">yourprofile</a></p>
+  <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">yourprofile</a></p>
 </section>
 
 <footer>
