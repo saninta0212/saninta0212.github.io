@@ -4,104 +4,208 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sambina Islam Aninta</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #0d1b2a;
-      --bg-accent: #1b263b;
+      --bg-card: #101f30;
       --text-main: #e0e6ed;
       --text-accent: #a8dadc;
+      --text-muted: #627a8f;
       --link-hover: #f4a261;
+      --border: rgba(168, 218, 220, 0.1);
     }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: 'Raleway', sans-serif;
-      background-color: var(--bg-dark);
+      background: var(--bg-dark);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.75;
     }
 
-    header {
-      background: linear-gradient(120deg, #1b263b, #2a3d5f);
-      padding: 3rem 1rem 4rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .dna {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      width: 80px;
-      opacity: 0.25;
-      filter: invert(90%);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2.8rem;
-      font-weight: 600;
-      color: #f1faee;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: var(--text-accent);
-    }
-
-    header .contact-links {
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    header .contact-links a {
-      color: var(--text-accent);
-      margin: 0 0.75rem;
-      text-decoration: none;
-    }
-
-    header .contact-links a:hover {
-      color: var(--link-hover);
-    }
-
+    /* ── Sticky nav ── */
     nav {
-      margin: 2rem auto;
-      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13, 27, 42, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.2rem 1.8rem;
+      padding: 0.7rem 1rem;
     }
 
     nav a {
-      margin: 0 1.5rem;
       text-decoration: none;
-      color: var(--text-accent);
-      font-weight: 600;
-      transition: color 0.3s ease;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
     }
 
     nav a:hover {
-      color: var(--link-hover);
+      color: var(--text-accent);
+      border-bottom-color: var(--text-accent);
+    }
+
+    /* ── Header ── */
+    header {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(155deg, #0a1622 0%, #0d1b2a 40%, #162236 80%, #1a2e47 100%);
+      padding: 5rem 2rem 4rem;
+    }
+
+    /* Background tulip field */
+    .tulip-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.07;
+      z-index: 0;
+    }
+
+    /* DNA base sequence text */
+    .seq-ticker {
+      position: absolute;
+      bottom: 6px;
+      left: 0;
+      right: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: rgba(168, 218, 220, 0.12);
+      letter-spacing: 0.18em;
+      overflow: hidden;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      padding: 0 2rem;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .header-text { flex: 1; }
+
+    h1 {
+      margin: 0 0 0.35rem;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #f1faee;
+      letter-spacing: -0.025em;
+    }
+
+    .subtitle {
+      margin: 0 0 1.4rem;
+      font-size: 1rem;
+      color: var(--text-accent);
+      font-weight: 400;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.3rem;
+      font-size: 0.87rem;
+    }
+
+    .contact-row a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-row a:hover { color: var(--link-hover); }
+
+    /* DNA canvas */
+    .dna-box {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    canvas#helix {
+      display: block;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
     }
 
     section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      background-color: var(--bg-accent);
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.9rem 2.2rem;
     }
 
+    /* Section headings */
     section h2 {
-      font-size: 1.5rem;
-      color: #f1faee;
-      margin-top: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 0.5rem;
+      margin: 0 0 1.3rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-accent);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
     }
 
+    section h2 .h2-tulip {
+      display: inline-block;
+      opacity: 0.75;
+      font-size: 0.9rem;
+    }
+
+    section h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Entries */
     .entry {
       margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
     .entry-header {
@@ -109,90 +213,163 @@
       justify-content: space-between;
       align-items: baseline;
       flex-wrap: wrap;
-      gap: 0.25rem;
+      gap: 0.15rem;
     }
 
     .entry-title {
       font-weight: 600;
-      color: #f1faee;
-      font-size: 1rem;
+      color: #ecf2f8;
+      font-size: 0.94rem;
     }
 
     .entry-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
       color: var(--text-accent);
-      font-size: 0.9rem;
       white-space: nowrap;
     }
 
-    .entry-subtitle {
+    .entry-sub {
       font-style: italic;
-      color: var(--text-accent);
-      font-size: 0.92rem;
-      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+      font-size: 0.87rem;
+      margin: 0.15rem 0 0.4rem;
     }
 
     ul {
       padding-left: 1.2rem;
-      margin-top: 0.4rem;
+      margin: 0.35rem 0 0;
     }
 
-    ul li {
-      margin-bottom: 0.3rem;
+    li {
+      font-size: 0.9rem;
+      margin-bottom: 0.28rem;
+      color: var(--text-main);
     }
 
     a {
       color: var(--text-accent);
+      text-decoration: none;
     }
 
-    a:hover {
-      color: var(--link-hover);
+    a:hover { color: var(--link-hover); }
+
+    /* Publication sub-headers */
+    .pub-label {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #ddeaf2;
+      margin: 1.1rem 0 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
+    .pub-label:first-child { margin-top: 0; }
+
+    /* Awards table */
     .awards-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.93rem;
+      font-size: 0.89rem;
     }
 
+    .awards-table tr:last-child td { border-bottom: none; }
+
     .awards-table td {
-      padding: 0.4rem 0.5rem;
+      padding: 0.65rem 0.5rem;
       vertical-align: top;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid var(--border);
     }
 
     .awards-table td:last-child {
       text-align: right;
       white-space: nowrap;
       color: var(--text-accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding-left: 1rem;
     }
 
     .award-desc {
       font-style: italic;
-      color: #94a3b8;
-      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 0.18rem;
     }
 
+    /* ── Hobbies ── */
+    .hobbies-grid {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .hobby-card {
+      flex: 1;
+      min-width: 130px;
+      background: rgba(168, 218, 220, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 1.3rem 0.9rem;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
+      cursor: default;
+    }
+
+    .hobby-card:hover {
+      border-color: rgba(168, 218, 220, 0.3);
+      background: rgba(168, 218, 220, 0.06);
+      transform: translateY(-3px);
+    }
+
+    .hobby-glyph {
+      display: block;
+      font-size: 1.9rem;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .hobby-name {
+      font-size: 0.87rem;
+      font-weight: 700;
+      color: #ecf2f8;
+      margin-bottom: 0.2rem;
+    }
+
+    .hobby-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Contact */
+    #contact p {
+      margin: 0 0 0.45rem;
+      font-size: 0.92rem;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #94a3b8;
+      padding: 1.4rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 620px) {
+      .header-inner { flex-direction: column-reverse; gap: 1.5rem; }
+      h1 { font-size: 1.9rem; }
+      .dna-box { align-self: center; }
+      section { padding: 1.4rem 1.1rem; }
+      nav { gap: 0.3rem 0.9rem; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Sambina Islam Aninta</h1>
-  <p>PhD Student | Biomedical Engineering &amp; Computational Genomics</p>
-  <div class="contact-links">
-    <a href="mailto:sambina.islam@gmail.com">sambina.islam@gmail.com</a>
-    <a href="https://www.linkedin.com/in/sambina-islam-aninta" target="_blank">LinkedIn</a>
-    <a href="https://github.com/saninta0212" target="_blank">GitHub</a>
-  </div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/DNA_icon.svg" alt="DNA icon" class="dna" />
-</header>
-
+<!-- ──────────────── Navigation ──────────────── -->
 <nav>
   <a href="#about">About</a>
   <a href="#education">Education</a>
@@ -200,264 +377,489 @@
   <a href="#publications">Publications</a>
   <a href="#awards">Awards</a>
   <a href="#teaching">Teaching</a>
+  <a href="#hobbies">Hobbies</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-  <h2>About</h2>
-  <p>
-    I'm a PhD student in Biomedical Engineering at the University of British Columbia, working in the
-    <a href="https://de-boer-lab.github.io/" target="_blank">de Boer Lab</a>. My research focuses on
-    applying machine learning and deep learning to regulatory genomics — studying how genetic variants
-    affect chromatin accessibility and gene expression, with applications in autoimmune disease.
-  </p>
-</section>
+<!-- ──────────────── Header ──────────────── -->
+<header>
 
-<section id="education">
-  <h2>Education</h2>
+  <!-- Tulip field background -->
+  <svg class="tulip-bg" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+    <!-- Tulip 1 -->
+    <g transform="translate(80, 30)">
+      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
+      <path d="M40 260 Q10 235 5 205 Q28 220 40 245" fill="#a8dadc"/>
+      <path d="M40 290 Q70 265 75 235 Q52 252 40 275" fill="#a8dadc"/>
+      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
+      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
+    </g>
+    <!-- Tulip 2 -->
+    <g transform="translate(200, 60) scale(0.75)">
+      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
+      <path d="M40 270 Q10 245 5 215 Q28 230 40 255" fill="#a8dadc"/>
+      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
+      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
+    </g>
+    <!-- Tulip 3 -->
+    <g transform="translate(310, 20) scale(0.9)">
+      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
+      <path d="M40 260 Q10 235 5 205 Q28 220 40 245" fill="#a8dadc"/>
+      <path d="M40 295 Q70 270 75 240 Q52 258 40 280" fill="#a8dadc"/>
+      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
+      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
+    </g>
+    <!-- Tulip 4 -->
+    <g transform="translate(430, 50) scale(0.65)">
+      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
+      <path d="M40 265 Q70 240 75 210 Q52 228 40 250" fill="#a8dadc"/>
+      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
+      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
+    </g>
+    <!-- Tulip 5 -->
+    <g transform="translate(900, 15) scale(1.1)">
+      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
+      <path d="M40 255 Q10 230 5 200 Q28 215 40 240" fill="#a8dadc"/>
+      <path d="M40 285 Q70 260 75 230 Q52 248 40 270" fill="#a8dadc"/>
+      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
+      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
+    </g>
+    <!-- Tulip 6 -->
+    <g transform="translate(1020, 40) scale(0.8)">
+      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
+      <path d="M40 270 Q10 245 5 215 Q28 230 40 255" fill="#a8dadc"/>
+      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
+      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
+    </g>
+    <!-- Tulip 7 -->
+    <g transform="translate(1130, 10) scale(0.7)">
+      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
+      <path d="M40 260 Q70 235 75 205 Q52 222 40 245" fill="#a8dadc"/>
+      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
+      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
+    </g>
+    <!-- Tulip 8 -->
+    <g transform="translate(560, 70) scale(0.55)">
+      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
+      <path d="M40 255 Q10 230 5 200 Q28 215 40 240" fill="#a8dadc"/>
+      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
+      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
+    </g>
+  </svg>
 
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">University of British Columbia</span>
-      <span class="entry-date">2025 – Present</span>
+  <!-- DNA base sequence ticker -->
+  <div class="seq-ticker" id="seq-ticker">ATCGATCGGCTATGCAAGTCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCA</div>
+
+  <div class="header-inner">
+    <div class="header-text">
+      <h1>Sambina Islam Aninta</h1>
+      <p class="subtitle">PhD Student &bull; Biomedical Engineering &amp; Computational Genomics</p>
+      <div class="contact-row">
+        <a href="mailto:sambina.islam@gmail.com">sambina.islam@gmail.com</a>
+        <a href="https://www.linkedin.com/in/sambina-islam-aninta" target="_blank">LinkedIn</a>
+        <a href="https://github.com/saninta0212" target="_blank">GitHub</a>
+        <a href="cv.pdf" target="_blank">CV ↗</a>
+      </div>
     </div>
-    <div class="entry-subtitle">PhD in Biomedical Engineering</div>
+    <div class="dna-box">
+      <canvas id="helix" width="80" height="230"></canvas>
+    </div>
   </div>
+</header>
 
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">University of British Columbia</span>
-      <span class="entry-date">2018 – 2023</span>
+<!-- ──────────────── Main Content ──────────────── -->
+<main>
+
+  <section id="about">
+    <h2><span class="h2-tulip">❀</span> About</h2>
+    <p>
+      I'm a PhD student in Biomedical Engineering at the University of British Columbia, working in the
+      <a href="https://de-boer-lab.github.io/" target="_blank">de Boer Lab</a>. My research focuses on
+      applying machine learning and deep learning to regulatory genomics &mdash; studying how genetic variants
+      affect chromatin accessibility and gene expression, with applications in autoimmune disease.
+    </p>
+  </section>
+
+  <section id="education">
+    <h2><span class="h2-tulip">❀</span> Education</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">University of British Columbia</span>
+        <span class="entry-date">2025 &ndash; Present</span>
+      </div>
+      <div class="entry-sub">PhD in Biomedical Engineering</div>
     </div>
-    <div class="entry-subtitle">Bachelor of Science in Combined Honours Computer Science and Biology &mdash; Average: 90%</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">University of British Columbia</span>
+        <span class="entry-date">2018 &ndash; 2023</span>
+      </div>
+      <div class="entry-sub">Bachelor of Science in Combined Honours Computer Science and Biology &mdash; Average: 90%</div>
+      <ul>
+        <li>Graduated with distinction and Co-operative education (Co-op Fall 2020 &ndash; Fall 2021)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2><span class="h2-tulip">❀</span> Research Experience</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Research Assistant / Research Technician III</span>
+        <span class="entry-date">January 2024 &ndash; Present</span>
+      </div>
+      <div class="entry-sub">de Boer Lab, School of Biomedical Engineering, UBC</div>
+      <ul>
+        <li>Developing multi-modal machine learning pipeline to study variant effect in T-cells for autoimmune diseases using ATAC-seq and MPRA data to predict chromatin accessibility and expression</li>
+        <li>Leading project to study how variant position modulates functional impact in MPRA <em>(manuscript in progress)</em></li>
+        <li>Developing a framework to comprehensively evaluate and benchmark interpretability of deep neural networks for genomics</li>
+        <li>Developing a generative deep learning model to predict single fiber chromatin accessibility from DNA sequence</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Undergraduate Research Assistant</span>
+        <span class="entry-date">September 2022 &ndash; May 2023</span>
+      </div>
+      <div class="entry-sub">Tam Lab, School of Biomedical Engineering, UBC</div>
+      <ul>
+        <li>Led an independent research study as part of Honours Thesis to develop and analyze Supervised Learning models to predict severity of exacerbation for COPD patients</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Data Informatics / Molecular Biology Co-op</span>
+        <span class="entry-date">May 2021 &ndash; December 2021</span>
+      </div>
+      <div class="entry-sub">Amgen</div>
+      <ul>
+        <li>Developed and tested novel methodologies to support <em>in vitro</em> and <em>in vivo</em> human antibody discovery platforms</li>
+        <li>Performed laboratory tasks: RNA extraction, RNA purification, cDNA synthesis and gene amplification from single B cells, cultured B cells and hybridomas</li>
+        <li>Designed and built a Dash web app to visualize immune repertoire containing thousands of sequences, deployed in Kubernetes &mdash; increased efficiency of sequence discovery platforms</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Bioinformatics Technology Lab Co-op</span>
+        <span class="entry-date">September 2020 &ndash; April 2021</span>
+      </div>
+      <div class="entry-sub">Birol Lab, Canada&rsquo;s Michael Smith Genome Sciences Centre at BC Cancer</div>
+      <ul>
+        <li>Co-developed an <em>in silico</em> pipeline to discover novel antimicrobial peptides (AMPs) from amphibian and insect transcriptomic data as antibiotic alternatives</li>
+        <li>Implemented scripts in Bash, Python, and R to assemble bulk RNA-seq reads, translate and cleave sequences reflecting post-translational modifications, tested on 84 datasets on a remote HPC server</li>
+        <li>Tested whether predicted AMPs were differentially expressed in amphibians when exposed to pathogens using R and Bash</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2><span class="h2-tulip">❀</span> Publications &amp; Talks</h2>
+
+    <div class="pub-label">Publications</div>
     <ul>
-      <li>Graduated with distinction and Co-operative education (Co-op Fall 2020 – Fall 2021)</li>
+      <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>(in prep.)</em></li>
+      <li>Lin D, Sutherland D, Aninta SI, et al. Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage. <em>Antibiotics (Basel).</em> 2022;11(7):952. doi:10.3390/antibiotics11070952.</li>
+      <li>Li C, Sutherland D, Salehi A, Lin D, Aninta SI, et al. Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides. <em>Protein Science.</em> 2025;18(5):34. doi:10.1101/2024.05.24.595811.</li>
     </ul>
-  </div>
-</section>
 
-<section id="research">
-  <h2>Research Experience</h2>
-
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">Research Assistant / Research Technician III</span>
-      <span class="entry-date">January 2024 – Present</span>
-    </div>
-    <div class="entry-subtitle">de Boer Lab, School of Biomedical Engineering, UBC</div>
+    <div class="pub-label">Poster Presentations</div>
     <ul>
-      <li>Developing multi-modal machine learning pipeline to study variant effect in T-cells for autoimmune diseases using ATAC-seq and MPRA data to predict chromatin accessibility and expression</li>
-      <li>Leading project to study how variant position modulates functional impact in MPRA <em>(manuscript in progress)</em></li>
-      <li>Developing a framework to comprehensively evaluate and benchmark interpretability of deep neural networks for genomics</li>
-      <li>Developing a generative deep learning model to predict single fiber chromatin accessibility from DNA sequence</li>
+      <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>Biology of Genomes, CSHL;</em> 2025.</li>
+      <li>Aninta SI, Rafi AM, de Boer C. How does data leakage from genomics foundational models inflate downstream model performance? <em>Biological Data Science, CSHL;</em> 2024.</li>
+      <li>Aninta SI, Rafi AM, de Boer C. How much of transfer learning is actually cheating? <em>MLCB;</em> 2024.</li>
+      <li>Aninta SI, Rafi AM, de Boer C. Predicting variant effects using multimodal deep neural networks in autoimmune diseases. <em>SynBio6.0;</em> 2024.</li>
+      <li>Lin D, Nip KM, Aninta SI, Li C, Warren RL, et al. rAMPage: Rapid antimicrobial peptide annotation and gene estimation. <em>ISMB;</em> 2021.</li>
     </ul>
-  </div>
 
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">Undergraduate Research Assistant</span>
-      <span class="entry-date">September 2022 – May 2023</span>
-    </div>
-    <div class="entry-subtitle">Tam Lab, School of Biomedical Engineering, UBC</div>
+    <div class="pub-label">Reviewing</div>
     <ul>
-      <li>Led an independent research study as part of Honours Thesis to develop and analyze Supervised Learning models to predict severity of exacerbation for COPD patients</li>
+      <li>Cell Genomics (2025)</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">Data Informatics / Molecular Biology Co-op</span>
-      <span class="entry-date">May 2021 – December 2021</span>
+  <section id="awards">
+    <h2><span class="h2-tulip">❀</span> Awards &amp; Scholarships</h2>
+    <table class="awards-table">
+      <tbody>
+        <tr>
+          <td>President&rsquo;s Academic Excellence Initiative PhD Award</td>
+          <td>2025&ndash;2026</td>
+        </tr>
+        <tr>
+          <td>
+            KM International Leader of Tomorrow (KMILOT) Award
+            <div class="award-desc">Full-ride scholarship (~250k CAD) for outstanding leadership, awarded to 34 incoming international students annually</div>
+          </td>
+          <td>2018&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Trek Excellence Scholarship
+            <div class="award-desc">Top 5% of Faculty, Year and School (6,000 CAD)</div>
+          </td>
+          <td>2019&ndash;2020, 2022&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Science Scholar
+            <div class="award-desc">Above 90% average</div>
+          </td>
+          <td>2018&ndash;2019, 2021&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Dean&rsquo;s Honour List
+            <div class="award-desc">Above 80% GPA</div>
+          </td>
+          <td>2018&ndash;2020, 2021&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Faculty of Science International Student Scholarship
+            <div class="award-desc">Strong academic achievement (7,700 CAD)</div>
+          </td>
+          <td>2021&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Clayton Person Memorial Scholarship in Biology
+            <div class="award-desc">Highest standing in BIOL 234/335 (Genetics) with faculty recommendation (750 CAD)</div>
+          </td>
+          <td>2021&ndash;2022</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Charles and Jane Banks Scholarship
+            <div class="award-desc">Faculty recommendation for academic excellence (270 CAD)</div>
+          </td>
+          <td>2022&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC J Fred Muir Memorial Scholarship in Science
+            <div class="award-desc">Faculty recommendation for academic excellence (350 CAD)</div>
+          </td>
+          <td>2019&ndash;2020</td>
+        </tr>
+        <tr>
+          <td>
+            Department of Computer Science Scholarship for vGHC
+            <div class="award-desc">Selected to attend virtual Grace Hopper Celebration, the largest conference for Women in Computing</div>
+          </td>
+          <td>2021</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="teaching">
+    <h2><span class="h2-tulip">❀</span> Teaching &amp; Leadership</h2>
+
+    <div class="pub-label">Teaching</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Teaching Assistant &ndash; Applied Machine Learning (CPSC 330)</span>
+        <span class="entry-date">May 2023 &ndash; June 2023</span>
+      </div>
+      <div class="entry-sub">University of British Columbia</div>
+      <ul>
+        <li>Selected by the instructor to TA for scoring a very high grade (94%)</li>
+        <li>Delivered weekly tutorials, held office hours, and monitored Piazza to assist students with ML foundations and programming environments</li>
+      </ul>
     </div>
-    <div class="entry-subtitle">Amgen</div>
-    <ul>
-      <li>Developed and tested novel methodologies to support <em>in vitro</em> and <em>in vivo</em> human antibody discovery platforms</li>
-      <li>Performed laboratory tasks: RNA extraction, RNA purification, cDNA synthesis and gene amplification from single B cells, cultured B cells and hybridomas</li>
-      <li>Designed and built a Dash web app to visualize immune repertoire containing thousands of sequences, deployed in Kubernetes — increased efficiency of sequence discovery platforms</li>
-    </ul>
-  </div>
 
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">Bioinformatics Technology Lab Co-op</span>
-      <span class="entry-date">September 2020 – April 2021</span>
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">AMS Tutoring Supervisor</span>
+        <span class="entry-date">September 2019 &ndash; April 2021</span>
+      </div>
+      <div class="entry-sub">Alma Mater Society, University of British Columbia</div>
+      <ul>
+        <li>Tutored students in one-on-one and group settings for first and second year Science courses</li>
+      </ul>
     </div>
-    <div class="entry-subtitle">Birol Lab, Canada's Michael Smith Genome Sciences Centre at BC Cancer</div>
-    <ul>
-      <li>Co-developed an <em>in silico</em> pipeline to discover novel antimicrobial peptides (AMPs) from amphibian and insect transcriptomic data as antibiotic alternatives</li>
-      <li>Implemented scripts in Bash, Python, and R to assemble bulk RNA-seq reads, translate and cleave sequences reflecting post-translational modifications, tested on 84 datasets on a remote HPC server</li>
-      <li>Tested whether predicted AMPs were differentially expressed in amphibians when exposed to pathogens using R and Bash</li>
-    </ul>
-  </div>
-</section>
 
-<section id="publications">
-  <h2>Publications &amp; Talks</h2>
+    <div class="pub-label">Leadership</div>
 
-  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem;">Publications</p>
-  <ul>
-    <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>(in prep.)</em></li>
-    <li>Lin D, Sutherland D, Aninta SI, et al. Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage. <em>Antibiotics (Basel).</em> 2022;11(7):952. doi:10.3390/antibiotics11070952.</li>
-    <li>Li C, Sutherland D, Salehi A, Lin D, Aninta SI, et al. Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides. <em>Protein Science.</em> 2025;18(5):34. doi:10.1101/2024.05.24.595811.</li>
-  </ul>
-
-  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem; margin-top:1.2rem;">Poster Presentations</p>
-  <ul>
-    <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>Biology of Genomes, CSHL;</em> 2025.</li>
-    <li>Aninta SI, Rafi AM, de Boer C. How does data leakage from genomics foundational models inflate downstream model performance? <em>Biological Data Science, CSHL;</em> 2024.</li>
-    <li>Aninta SI, Rafi AM, de Boer C. How much of transfer learning is actually cheating? <em>MLCB;</em> 2024.</li>
-    <li>Aninta SI, Rafi AM, de Boer C. Predicting variant effects using multimodal deep neural networks in autoimmune diseases. <em>SynBio6.0;</em> 2024.</li>
-    <li>Lin D, Nip KM, Aninta SI, Li C, Warren RL, et al. rAMPage: Rapid antimicrobial peptide annotation and gene estimation. <em>ISMB;</em> 2021.</li>
-  </ul>
-
-  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem; margin-top:1.2rem;">Reviewing</p>
-  <ul>
-    <li>Cell Genomics (2025)</li>
-  </ul>
-</section>
-
-<section id="awards">
-  <h2>Awards &amp; Scholarships</h2>
-  <table class="awards-table">
-    <tbody>
-      <tr>
-        <td>
-          President's Academic Excellence Initiative PhD Award
-        </td>
-        <td>2025–2026</td>
-      </tr>
-      <tr>
-        <td>
-          KM International Leader of Tomorrow (KMILOT) Award
-          <div class="award-desc">Full-ride scholarship (~250k CAD) for outstanding leadership, awarded to 34 incoming international students annually</div>
-        </td>
-        <td>2018–2023</td>
-      </tr>
-      <tr>
-        <td>
-          UBC Trek Excellence Scholarship
-          <div class="award-desc">Top 5% of Faculty, Year and School (6,000 CAD)</div>
-        </td>
-        <td>2019–2020, 2022–2023</td>
-      </tr>
-      <tr>
-        <td>
-          UBC Science Scholar
-          <div class="award-desc">Above 90% average</div>
-        </td>
-        <td>2018–2019, 2021–2023</td>
-      </tr>
-      <tr>
-        <td>
-          UBC Dean's Honour List
-          <div class="award-desc">Above 80% GPA</div>
-        </td>
-        <td>2018–2020, 2021–2023</td>
-      </tr>
-      <tr>
-        <td>
-          UBC Faculty of Science International Student Scholarship
-          <div class="award-desc">Strong academic achievement (7,700 CAD)</div>
-        </td>
-        <td>2021–2023</td>
-      </tr>
-      <tr>
-        <td>
-          UBC Clayton Person Memorial Scholarship in Biology
-          <div class="award-desc">Highest standing in BIOL 234/335 (Genetics) with faculty recommendation (750 CAD)</div>
-        </td>
-        <td>2021–2022</td>
-      </tr>
-      <tr>
-        <td>
-          UBC Charles and Jane Banks Scholarship
-          <div class="award-desc">Faculty recommendation for academic excellence (270 CAD)</div>
-        </td>
-        <td>2022–2023</td>
-      </tr>
-      <tr>
-        <td>
-          UBC J Fred Muir Memorial Scholarship in Science
-          <div class="award-desc">Faculty recommendation for academic excellence (350 CAD)</div>
-        </td>
-        <td>2019–2020</td>
-      </tr>
-      <tr>
-        <td>
-          Department of Computer Science Scholarship for vGHC
-          <div class="award-desc">Selected to attend virtual Grace Hopper Celebration, the largest conference for Women in Computing</div>
-        </td>
-        <td>2021</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="teaching">
-  <h2>Teaching &amp; Leadership</h2>
-
-  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem;">Teaching</p>
-
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">Teaching Assistant – Applied Machine Learning (CPSC 330)</span>
-      <span class="entry-date">May 2023 – June 2023</span>
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">BC Director of Communications &ndash; Nucleate Canada</span>
+        <span class="entry-date">June 2024 &ndash; May 2025</span>
+      </div>
+      <div class="entry-sub">Nucleate Canada, British Columbia</div>
+      <ul>
+        <li>Spearheaded the regional communications team for the Nucleate Activator program in BC, providing equity-free, pre-IP support to graduate students translating research into life sciences ventures</li>
+        <li>Facilitated cross-disciplinary team matching and coordinated 1-on-1 venture-building workshops with industry mentors, leading to a national pitch competition with Canada-wide partners</li>
+      </ul>
     </div>
-    <div class="entry-subtitle">University of British Columbia</div>
-    <ul>
-      <li>Selected by the instructor to TA for scoring a very high grade (94%)</li>
-      <li>Delivered weekly tutorials, held office hours, and monitored Piazza to assist students with ML foundations and programming environments</li>
-    </ul>
-  </div>
 
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">AMS Tutoring Supervisor</span>
-      <span class="entry-date">September 2019 – April 2021</span>
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">President &ndash; UBC STEM Fellowship</span>
+        <span class="entry-date">March 2021 &ndash; May 2023</span>
+      </div>
+      <ul>
+        <li>Led a team of 10 executives; coordinated the REO program providing high school students from underrepresented groups in STEM with hands-on research experience at UBC</li>
+        <li>Organized STEMpowerment, a mentorship program pairing youth from underrepresented groups with UBC student mentors</li>
+      </ul>
     </div>
-    <div class="entry-subtitle">Alma Mater Society, University of British Columbia</div>
-    <ul>
-      <li>Tutored students in one-on-one and group settings for first and second year Science courses</li>
-    </ul>
-  </div>
+  </section>
 
-  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem; margin-top:1.2rem;">Leadership</p>
-
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">BC Director of Communications – Nucleate Canada</span>
-      <span class="entry-date">June 2024 – May 2025</span>
+  <!-- ── Hobbies ── -->
+  <section id="hobbies">
+    <h2><span class="h2-tulip">❀</span> Hobbies &amp; Interests</h2>
+    <div class="hobbies-grid">
+      <div class="hobby-card">
+        <span class="hobby-glyph">🏺</span>
+        <div class="hobby-name">Pottery</div>
+        <div class="hobby-note">Throwing on the wheel &amp; hand-building</div>
+      </div>
+      <div class="hobby-card">
+        <span class="hobby-glyph">🌷</span>
+        <div class="hobby-name">Tulips</div>
+        <div class="hobby-note">Growing &amp; collecting tulip varieties</div>
+      </div>
+      <div class="hobby-card">
+        <span class="hobby-glyph">🏃</span>
+        <div class="hobby-name">Running</div>
+        <div class="hobby-note">Trail runs &amp; city routes around Vancouver</div>
+      </div>
+      <div class="hobby-card">
+        <span class="hobby-glyph">💃</span>
+        <div class="hobby-name">Salsa</div>
+        <div class="hobby-note">Learning salsa &mdash; on2 styling</div>
+      </div>
     </div>
-    <div class="entry-subtitle">Nucleate Canada, British Columbia</div>
-    <ul>
-      <li>Spearheaded the regional communications team for the Nucleate Activator program in BC, providing equity-free, pre-IP support to graduate students translating research into life sciences ventures</li>
-      <li>Facilitated cross-disciplinary team matching and coordinated 1-on-1 venture-building workshops with industry mentors, leading to a national pitch competition with Canada-wide partners</li>
-    </ul>
-  </div>
+  </section>
 
-  <div class="entry">
-    <div class="entry-header">
-      <span class="entry-title">President – UBC STEM Fellowship</span>
-      <span class="entry-date">March 2021 – May 2023</span>
-    </div>
-    <ul>
-      <li>Led a team of 10 executives; coordinated the REO program providing high school students from underrepresented groups in STEM with hands-on research experience at UBC</li>
-      <li>Organized STEMpowerment, a mentorship program pairing youth from underrepresented groups with UBC student mentors</li>
-    </ul>
-  </div>
-</section>
+  <section id="contact">
+    <h2><span class="h2-tulip">❀</span> Contact</h2>
+    <p>Email: <a href="mailto:sambina.islam@gmail.com">sambina.islam@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/sambina-islam-aninta" target="_blank">linkedin.com/in/sambina-islam-aninta</a></p>
+    <p>GitHub: <a href="https://github.com/saninta0212" target="_blank">github.com/saninta0212</a></p>
+    <p>CV: <a href="cv.pdf" target="_blank">Download PDF ↗</a></p>
+  </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:sambina.islam@gmail.com">sambina.islam@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/sambina-islam-aninta" target="_blank">linkedin.com/in/sambina-islam-aninta</a></p>
-  <p>GitHub: <a href="https://github.com/saninta0212" target="_blank">github.com/saninta0212</a></p>
-  <p>CV: <a href="cv.pdf" target="_blank">Download PDF</a></p>
-</section>
+</main>
 
 <footer>
-  &copy; 2025 Sambina Islam Aninta | DNA icon from Wikimedia Commons
+  &copy; 2025 Sambina Islam Aninta
 </footer>
+
+<!-- ──────────────── DNA Helix Animation ──────────────── -->
+<script>
+(function () {
+  const canvas = document.getElementById('helix');
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = 80, H = 230;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const cx = W / 2;       // center x
+  const amp = 22;         // helix amplitude
+  const turns = 2.5;      // number of full turns visible
+  const STEPS = 200;      // path resolution
+  const RUNG_EVERY = 14;  // draw a rung every N steps
+
+  // Color palettes
+  const color1 = '#a8dadc';  // teal strand
+  const color2 = '#f4a261';  // warm strand
+  const rungColor = 'rgba(168, 218, 220, ';
+
+  let phase = 0;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    const pts1 = [];
+    const pts2 = [];
+
+    for (let i = 0; i <= STEPS; i++) {
+      const t = (i / STEPS) * turns * 2 * Math.PI + phase;
+      const y = (i / STEPS) * H;
+      pts1.push({ x: cx + amp * Math.sin(t),       y });
+      pts2.push({ x: cx + amp * Math.sin(t + Math.PI), y });
+    }
+
+    // ── Draw rungs (behind strands) ──
+    for (let i = 0; i <= STEPS; i += RUNG_EVERY) {
+      const p1 = pts1[i], p2 = pts2[i];
+      const dx = p2.x - p1.x;
+      // opacity based on how spread-apart the strands are
+      const spread = Math.abs(dx) / (2 * amp);
+      // front rungs are more opaque than back rungs
+      const alpha = spread * 0.55;
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.strokeStyle = rungColor + alpha.toFixed(2) + ')';
+      ctx.lineWidth = 1.4;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Small dot at rung endpoints
+      if (spread > 0.15) {
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, 1.6, 0, Math.PI * 2);
+        ctx.fillStyle = rungColor + (alpha * 1.4).toFixed(2) + ')';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(p2.x, p2.y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // ── Draw strand 1 ──
+    ctx.beginPath();
+    ctx.moveTo(pts1[0].x, pts1[0].y);
+    for (let i = 1; i <= STEPS; i++) ctx.lineTo(pts1[i].x, pts1[i].y);
+    ctx.strokeStyle = color1;
+    ctx.lineWidth = 2.2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+
+    // ── Draw strand 2 ──
+    ctx.beginPath();
+    ctx.moveTo(pts2[0].x, pts2[0].y);
+    for (let i = 1; i <= STEPS; i++) ctx.lineTo(pts2[i].x, pts2[i].y);
+    ctx.strokeStyle = color2;
+    ctx.lineWidth = 2.2;
+    ctx.stroke();
+
+    phase += 0.022;
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+</script>
 
 </body>
 </html>
