@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sambina</title>
+  <title>Sambina Islam Aninta</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -50,6 +50,21 @@
       color: var(--text-accent);
     }
 
+    header .contact-links {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    header .contact-links a {
+      color: var(--text-accent);
+      margin: 0 0.75rem;
+      text-decoration: none;
+    }
+
+    header .contact-links a:hover {
+      color: var(--link-hover);
+    }
+
     nav {
       margin: 2rem auto;
       text-align: center;
@@ -85,8 +100,44 @@
       padding-bottom: 0.5rem;
     }
 
+    .entry {
+      margin-bottom: 1.5rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .entry-title {
+      font-weight: 600;
+      color: #f1faee;
+      font-size: 1rem;
+    }
+
+    .entry-date {
+      color: var(--text-accent);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .entry-subtitle {
+      font-style: italic;
+      color: var(--text-accent);
+      font-size: 0.92rem;
+      margin-bottom: 0.4rem;
+    }
+
     ul {
       padding-left: 1.2rem;
+      margin-top: 0.4rem;
+    }
+
+    ul li {
+      margin-bottom: 0.3rem;
     }
 
     a {
@@ -95,6 +146,30 @@
 
     a:hover {
       color: var(--link-hover);
+    }
+
+    .awards-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+    }
+
+    .awards-table td {
+      padding: 0.4rem 0.5rem;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .awards-table td:last-child {
+      text-align: right;
+      white-space: nowrap;
+      color: var(--text-accent);
+    }
+
+    .award-desc {
+      font-style: italic;
+      color: #94a3b8;
+      font-size: 0.85rem;
     }
 
     footer {
@@ -109,48 +184,279 @@
 
 <header>
   <h1>Sambina Islam Aninta</h1>
-  <p>PhD Student | Computational Genomics</p>
+  <p>PhD Student | Biomedical Engineering &amp; Computational Genomics</p>
+  <div class="contact-links">
+    <a href="mailto:sambina.islam@gmail.com">sambina.islam@gmail.com</a>
+    <a href="https://www.linkedin.com/in/sambina-islam-aninta" target="_blank">LinkedIn</a>
+    <a href="https://github.com/saninta0212" target="_blank">GitHub</a>
+  </div>
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/DNA_icon.svg" alt="DNA icon" class="dna" />
 </header>
 
 <nav>
-  <a href="#home">About</a>
-  <a href="#news">Research</a>
-  <a href="#publications">CV</a>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
   <a href="#research">Research</a>
-  <a href="#cv">CV</a>
+  <a href="#publications">Publications</a>
+  <a href="#awards">Awards</a>
+  <a href="#teaching">Teaching</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="home">
+<section id="about">
+  <h2>About</h2>
   <p>
-    I'm a PhD student interested in applications of machine learning in regulatory genomics.
+    I'm a PhD student in Biomedical Engineering at the University of British Columbia, working in the
+    <a href="https://de-boer-lab.github.io/" target="_blank">de Boer Lab</a>. My research focuses on
+    applying machine learning and deep learning to regulatory genomics — studying how genetic variants
+    affect chromatin accessibility and gene expression, with applications in autoimmune disease.
   </p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">University of British Columbia</span>
+      <span class="entry-date">2025 – Present</span>
+    </div>
+    <div class="entry-subtitle">PhD in Biomedical Engineering</div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">University of British Columbia</span>
+      <span class="entry-date">2018 – 2023</span>
+    </div>
+    <div class="entry-subtitle">Bachelor of Science in Combined Honours Computer Science and Biology &mdash; Average: 90%</div>
+    <ul>
+      <li>Graduated with distinction and Co-operative education (Co-op Fall 2020 – Fall 2021)</li>
+    </ul>
+  </div>
 </section>
 
 <section id="research">
-  <h2>Research & Projects</h2>
+  <h2>Research Experience</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Research Assistant / Research Technician III</span>
+      <span class="entry-date">January 2024 – Present</span>
+    </div>
+    <div class="entry-subtitle">de Boer Lab, School of Biomedical Engineering, UBC</div>
+    <ul>
+      <li>Developing multi-modal machine learning pipeline to study variant effect in T-cells for autoimmune diseases using ATAC-seq and MPRA data to predict chromatin accessibility and expression</li>
+      <li>Leading project to study how variant position modulates functional impact in MPRA <em>(manuscript in progress)</em></li>
+      <li>Developing a framework to comprehensively evaluate and benchmark interpretability of deep neural networks for genomics</li>
+      <li>Developing a generative deep learning model to predict single fiber chromatin accessibility from DNA sequence</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Undergraduate Research Assistant</span>
+      <span class="entry-date">September 2022 – May 2023</span>
+    </div>
+    <div class="entry-subtitle">Tam Lab, School of Biomedical Engineering, UBC</div>
+    <ul>
+      <li>Led an independent research study as part of Honours Thesis to develop and analyze Supervised Learning models to predict severity of exacerbation for COPD patients</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Data Informatics / Molecular Biology Co-op</span>
+      <span class="entry-date">May 2021 – December 2021</span>
+    </div>
+    <div class="entry-subtitle">Amgen</div>
+    <ul>
+      <li>Developed and tested novel methodologies to support <em>in vitro</em> and <em>in vivo</em> human antibody discovery platforms</li>
+      <li>Performed laboratory tasks: RNA extraction, RNA purification, cDNA synthesis and gene amplification from single B cells, cultured B cells and hybridomas</li>
+      <li>Designed and built a Dash web app to visualize immune repertoire containing thousands of sequences, deployed in Kubernetes — increased efficiency of sequence discovery platforms</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Bioinformatics Technology Lab Co-op</span>
+      <span class="entry-date">September 2020 – April 2021</span>
+    </div>
+    <div class="entry-subtitle">Birol Lab, Canada's Michael Smith Genome Sciences Centre at BC Cancer</div>
+    <ul>
+      <li>Co-developed an <em>in silico</em> pipeline to discover novel antimicrobial peptides (AMPs) from amphibian and insect transcriptomic data as antibiotic alternatives</li>
+      <li>Implemented scripts in Bash, Python, and R to assemble bulk RNA-seq reads, translate and cleave sequences reflecting post-translational modifications, tested on 84 datasets on a remote HPC server</li>
+      <li>Tested whether predicted AMPs were differentially expressed in amphibians when exposed to pathogens using R and Bash</li>
+    </ul>
+  </div>
+</section>
+
+<section id="publications">
+  <h2>Publications &amp; Talks</h2>
+
+  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem;">Publications</p>
   <ul>
-    <li>🧬 Fiber-seq Variant Accessibility Prediction Pipeline</li>
-    <!-- Add more projects as needed -->
+    <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>(in prep.)</em></li>
+    <li>Lin D, Sutherland D, Aninta SI, et al. Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage. <em>Antibiotics (Basel).</em> 2022;11(7):952. doi:10.3390/antibiotics11070952.</li>
+    <li>Li C, Sutherland D, Salehi A, Lin D, Aninta SI, et al. Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides. <em>Protein Science.</em> 2025;18(5):34. doi:10.1101/2024.05.24.595811.</li>
+  </ul>
+
+  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem; margin-top:1.2rem;">Poster Presentations</p>
+  <ul>
+    <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>Biology of Genomes, CSHL;</em> 2025.</li>
+    <li>Aninta SI, Rafi AM, de Boer C. How does data leakage from genomics foundational models inflate downstream model performance? <em>Biological Data Science, CSHL;</em> 2024.</li>
+    <li>Aninta SI, Rafi AM, de Boer C. How much of transfer learning is actually cheating? <em>MLCB;</em> 2024.</li>
+    <li>Aninta SI, Rafi AM, de Boer C. Predicting variant effects using multimodal deep neural networks in autoimmune diseases. <em>SynBio6.0;</em> 2024.</li>
+    <li>Lin D, Nip KM, Aninta SI, Li C, Warren RL, et al. rAMPage: Rapid antimicrobial peptide annotation and gene estimation. <em>ISMB;</em> 2021.</li>
+  </ul>
+
+  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem; margin-top:1.2rem;">Reviewing</p>
+  <ul>
+    <li>Cell Genomics (2025)</li>
   </ul>
 </section>
 
-<section id="cv">
-  <h2>CV</h2>
-  <p>
-    <a href="cv.pdf" target="_blank">Download my CV (PDF)</a>
-  </p>
+<section id="awards">
+  <h2>Awards &amp; Scholarships</h2>
+  <table class="awards-table">
+    <tbody>
+      <tr>
+        <td>
+          President's Academic Excellence Initiative PhD Award
+        </td>
+        <td>2025–2026</td>
+      </tr>
+      <tr>
+        <td>
+          KM International Leader of Tomorrow (KMILOT) Award
+          <div class="award-desc">Full-ride scholarship (~250k CAD) for outstanding leadership, awarded to 34 incoming international students annually</div>
+        </td>
+        <td>2018–2023</td>
+      </tr>
+      <tr>
+        <td>
+          UBC Trek Excellence Scholarship
+          <div class="award-desc">Top 5% of Faculty, Year and School (6,000 CAD)</div>
+        </td>
+        <td>2019–2020, 2022–2023</td>
+      </tr>
+      <tr>
+        <td>
+          UBC Science Scholar
+          <div class="award-desc">Above 90% average</div>
+        </td>
+        <td>2018–2019, 2021–2023</td>
+      </tr>
+      <tr>
+        <td>
+          UBC Dean's Honour List
+          <div class="award-desc">Above 80% GPA</div>
+        </td>
+        <td>2018–2020, 2021–2023</td>
+      </tr>
+      <tr>
+        <td>
+          UBC Faculty of Science International Student Scholarship
+          <div class="award-desc">Strong academic achievement (7,700 CAD)</div>
+        </td>
+        <td>2021–2023</td>
+      </tr>
+      <tr>
+        <td>
+          UBC Clayton Person Memorial Scholarship in Biology
+          <div class="award-desc">Highest standing in BIOL 234/335 (Genetics) with faculty recommendation (750 CAD)</div>
+        </td>
+        <td>2021–2022</td>
+      </tr>
+      <tr>
+        <td>
+          UBC Charles and Jane Banks Scholarship
+          <div class="award-desc">Faculty recommendation for academic excellence (270 CAD)</div>
+        </td>
+        <td>2022–2023</td>
+      </tr>
+      <tr>
+        <td>
+          UBC J Fred Muir Memorial Scholarship in Science
+          <div class="award-desc">Faculty recommendation for academic excellence (350 CAD)</div>
+        </td>
+        <td>2019–2020</td>
+      </tr>
+      <tr>
+        <td>
+          Department of Computer Science Scholarship for vGHC
+          <div class="award-desc">Selected to attend virtual Grace Hopper Celebration, the largest conference for Women in Computing</div>
+        </td>
+        <td>2021</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="teaching">
+  <h2>Teaching &amp; Leadership</h2>
+
+  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem;">Teaching</p>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Teaching Assistant – Applied Machine Learning (CPSC 330)</span>
+      <span class="entry-date">May 2023 – June 2023</span>
+    </div>
+    <div class="entry-subtitle">University of British Columbia</div>
+    <ul>
+      <li>Selected by the instructor to TA for scoring a very high grade (94%)</li>
+      <li>Delivered weekly tutorials, held office hours, and monitored Piazza to assist students with ML foundations and programming environments</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">AMS Tutoring Supervisor</span>
+      <span class="entry-date">September 2019 – April 2021</span>
+    </div>
+    <div class="entry-subtitle">Alma Mater Society, University of British Columbia</div>
+    <ul>
+      <li>Tutored students in one-on-one and group settings for first and second year Science courses</li>
+    </ul>
+  </div>
+
+  <p style="font-weight:600; color:#f1faee; margin-bottom:0.4rem; margin-top:1.2rem;">Leadership</p>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">BC Director of Communications – Nucleate Canada</span>
+      <span class="entry-date">June 2024 – May 2025</span>
+    </div>
+    <div class="entry-subtitle">Nucleate Canada, British Columbia</div>
+    <ul>
+      <li>Spearheaded the regional communications team for the Nucleate Activator program in BC, providing equity-free, pre-IP support to graduate students translating research into life sciences ventures</li>
+      <li>Facilitated cross-disciplinary team matching and coordinated 1-on-1 venture-building workshops with industry mentors, leading to a national pitch competition with Canada-wide partners</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">President – UBC STEM Fellowship</span>
+      <span class="entry-date">March 2021 – May 2023</span>
+    </div>
+    <ul>
+      <li>Led a team of 10 executives; coordinated the REO program providing high school students from underrepresented groups in STEM with hands-on research experience at UBC</li>
+      <li>Organized STEMpowerment, a mentorship program pairing youth from underrepresented groups with UBC student mentors</li>
+    </ul>
+  </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: sambina.aninta@ubc.ca</p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/sambina-islam-aninta-7b3004186/" target="_blank">yourprofile</a></p>
+  <p>Email: <a href="mailto:sambina.islam@gmail.com">sambina.islam@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/sambina-islam-aninta" target="_blank">linkedin.com/in/sambina-islam-aninta</a></p>
+  <p>GitHub: <a href="https://github.com/saninta0212" target="_blank">github.com/saninta0212</a></p>
+  <p>CV: <a href="cv.pdf" target="_blank">Download PDF</a></p>
 </section>
 
 <footer>
-  &copy; 2025 Sambina Islam | DNA icon from Wikimedia Commons
+  &copy; 2025 Sambina Islam Aninta | DNA icon from Wikimedia Commons
 </footer>
 
 </body>
