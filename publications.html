@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publications &mdash; Sambina Islam Aninta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0d1b2a;
+      --bg-card: #101f30;
+      --text-main: #e0e6ed;
+      --text-accent: #a8dadc;
+      --text-muted: #627a8f;
+      --link-hover: #f4a261;
+      --border: rgba(168, 218, 220, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.75;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13, 27, 42, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.2rem 1.8rem;
+      padding: 0.7rem 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover { color: var(--text-accent); border-bottom-color: var(--text-accent); }
+    nav a.active { color: var(--text-accent); border-bottom-color: var(--text-accent); }
+
+    .page-hero {
+      background: linear-gradient(155deg, #0a1622 0%, #0d1b2a 60%, #162236 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem 2.5rem;
+    }
+
+    .page-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-hero-inner h1 {
+      margin: 0 0 0.3rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f1faee;
+      letter-spacing: -0.02em;
+    }
+
+    .page-hero-inner p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.9rem 2.2rem;
+    }
+
+    section h2 {
+      margin: 0 0 1.3rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-accent);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    section h2 .h2-tulip { display: inline-block; opacity: 0.75; font-size: 0.9rem; }
+
+    section h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .pub-label {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #ddeaf2;
+      margin: 1.3rem 0 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pub-label:first-child { margin-top: 0; }
+
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.35rem 0 0;
+    }
+
+    li {
+      font-size: 0.9rem;
+      margin-bottom: 0.55rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    li:last-child { margin-bottom: 0; }
+
+    a { color: var(--text-accent); text-decoration: none; }
+    a:hover { color: var(--link-hover); }
+
+    footer {
+      text-align: center;
+      padding: 1.4rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 620px) {
+      section { padding: 1.4rem 1.1rem; }
+      nav { gap: 0.3rem 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">← Home</a>
+  <a href="index.html#news">News</a>
+  <a href="publications.html" class="active">Publications</a>
+  <a href="talks.html">Talks</a>
+  <a href="awards.html">Awards</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <h1>Publications</h1>
+    <p>Full list of research publications and peer review contributions.</p>
+  </div>
+</div>
+
+<main>
+  <section>
+    <h2><span class="h2-tulip">❀</span> Journal Articles</h2>
+
+    <div class="pub-label">In Preparation</div>
+    <ul>
+      <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>(in prep.)</em></li>
+    </ul>
+
+    <div class="pub-label">Published</div>
+    <ul>
+      <li>
+        Li C, Sutherland D, Salehi A, Lin D, Aninta SI, et al. Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides.
+        <em>Protein Science.</em> 2025;18(5):34. doi:10.1101/2024.05.24.595811.
+      </li>
+      <li>
+        Lin D, Sutherland D, Aninta SI, et al. Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage.
+        <em>Antibiotics (Basel).</em> 2022;11(7):952. doi:10.3390/antibiotics11070952.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="h2-tulip">❀</span> Peer Review</h2>
+    <ul>
+      <li>Cell Genomics (2025)</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  &copy; 2026 Sambina Islam Aninta
+</footer>
+
+</body>
+</html>

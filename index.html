@@ -56,7 +56,7 @@
       transition: color 0.2s, border-color 0.2s;
     }
 
-    nav a:hover {
+    nav a:hover, nav a.active {
       color: var(--text-accent);
       border-bottom-color: var(--text-accent);
     }
@@ -66,22 +66,19 @@
       position: relative;
       overflow: hidden;
       background: linear-gradient(155deg, #0a1622 0%, #0d1b2a 40%, #162236 80%, #1a2e47 100%);
-      padding: 5rem 2rem 4rem;
+      padding: 5.5rem 2rem 5rem;
     }
 
-    /* Background tulip field */
-    .tulip-bg {
+    /* Static DNA canvas background */
+    #dna-bg {
       position: absolute;
-      bottom: 0;
+      top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
       pointer-events: none;
-      opacity: 0.07;
       z-index: 0;
     }
 
-    /* DNA base sequence text */
+    /* DNA base sequence ticker */
     .seq-ticker {
       position: absolute;
       bottom: 6px;
@@ -89,13 +86,14 @@
       right: 0;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.58rem;
-      color: rgba(168, 218, 220, 0.12);
+      color: rgba(168, 218, 220, 0.1);
       letter-spacing: 0.18em;
       overflow: hidden;
       white-space: nowrap;
       pointer-events: none;
       user-select: none;
       padding: 0 2rem;
+      z-index: 1;
     }
 
     .header-inner {
@@ -103,23 +101,18 @@
       z-index: 2;
       max-width: 900px;
       margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 3.5rem;
     }
-
-    .header-text { flex: 1; }
 
     h1 {
       margin: 0 0 0.35rem;
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       font-weight: 700;
       color: #f1faee;
       letter-spacing: -0.025em;
     }
 
     .subtitle {
-      margin: 0 0 1.4rem;
+      margin: 0 0 1.5rem;
       font-size: 1rem;
       color: var(--text-accent);
       font-weight: 400;
@@ -129,7 +122,7 @@
     .contact-icons {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.9rem;
       flex-wrap: wrap;
     }
 
@@ -161,7 +154,6 @@
       text-transform: uppercase;
     }
 
-    /* Tooltip */
     .icon-link[data-tip]:hover::after {
       content: attr(data-tip);
       position: absolute;
@@ -178,18 +170,6 @@
       border: 1px solid var(--border);
       pointer-events: none;
       z-index: 100;
-    }
-
-    /* DNA canvas */
-    .dna-box {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    canvas#helix {
-      display: block;
     }
 
     /* ── Main ── */
@@ -209,7 +189,6 @@
       padding: 1.9rem 2.2rem;
     }
 
-    /* Section headings */
     section h2 {
       margin: 0 0 1.3rem;
       font-size: 0.76rem;
@@ -222,58 +201,13 @@
       gap: 0.55rem;
     }
 
-    section h2 .h2-tulip {
-      display: inline-block;
-      opacity: 0.75;
-      font-size: 0.9rem;
-    }
+    section h2 .h2-tulip { display: inline-block; opacity: 0.75; font-size: 0.9rem; }
 
     section h2::after {
       content: '';
       flex: 1;
       height: 1px;
       background: var(--border);
-    }
-
-    /* Entries */
-    .entry {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .entry:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.15rem;
-    }
-
-    .entry-title {
-      font-weight: 600;
-      color: #ecf2f8;
-      font-size: 0.94rem;
-    }
-
-    .entry-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
-      color: var(--text-accent);
-      white-space: nowrap;
-    }
-
-    .entry-sub {
-      font-style: italic;
-      color: var(--text-muted);
-      font-size: 0.87rem;
-      margin: 0.15rem 0 0.4rem;
     }
 
     ul {
@@ -283,50 +217,70 @@
 
     li {
       font-size: 0.9rem;
-      margin-bottom: 0.28rem;
+      margin-bottom: 0.4rem;
       color: var(--text-main);
     }
 
-    a {
-      color: var(--text-accent);
-      text-decoration: none;
-    }
-
+    a { color: var(--text-accent); text-decoration: none; }
     a:hover { color: var(--link-hover); }
 
-    /* Publication sub-headers */
-    .pub-label {
-      font-weight: 700;
-      font-size: 0.82rem;
-      color: #ddeaf2;
-      margin: 1.1rem 0 0.45rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    /* Preview list */
+    .preview-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .pub-label:first-child { margin-top: 0; }
+    .preview-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
 
-    /* Awards table */
-    .awards-table {
+    .preview-list li:first-child { padding-top: 0; }
+    .preview-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    /* View all link */
+    .view-all {
+      text-align: right;
+      margin-top: 1.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .view-all a {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .view-all a:hover { color: var(--link-hover); }
+
+    /* Awards preview table */
+    .awards-preview {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.89rem;
     }
 
-    .awards-table tr:last-child td { border-bottom: none; }
-
-    .awards-table td {
-      padding: 0.65rem 0.5rem;
+    .awards-preview td {
+      padding: 0.7rem 0.5rem;
       vertical-align: top;
       border-bottom: 1px solid var(--border);
     }
 
-    .awards-table td:last-child {
+    .awards-preview tr:last-child td { border-bottom: none; }
+
+    .awards-preview td:last-child {
       text-align: right;
       white-space: nowrap;
       color: var(--text-accent);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       padding-left: 1rem;
     }
 
@@ -334,15 +288,54 @@
       font-style: italic;
       color: var(--text-muted);
       font-size: 0.8rem;
-      margin-top: 0.18rem;
+      margin-top: 0.15rem;
     }
 
-    /* ── Hobbies ── */
-    .hobbies-grid {
+    /* ── News ── */
+    .news-list { display: flex; flex-direction: column; }
+
+    .news-item {
       display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
+      gap: 1.4rem;
+      align-items: flex-start;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
     }
+
+    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .news-item:first-child { padding-top: 0; }
+
+    .news-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-accent);
+      white-space: nowrap;
+      min-width: 72px;
+      padding-top: 0.18rem;
+    }
+
+    .news-content { font-size: 0.9rem; line-height: 1.6; }
+
+    .news-tag {
+      display: inline-block;
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 1px 7px;
+      border-radius: 20px;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+      border: 1px solid;
+    }
+
+    .tag-paper  { color: #a8dadc; border-color: rgba(168,218,220,0.4); background: rgba(168,218,220,0.07); }
+    .tag-talk   { color: #f4a261; border-color: rgba(244,162, 97,0.4); background: rgba(244,162, 97,0.07); }
+    .tag-award  { color: #c4b5fd; border-color: rgba(196,181,253,0.4); background: rgba(196,181,253,0.07); }
+    .tag-misc   { color: #94a3b8; border-color: rgba(148,163,184,0.4); background: rgba(148,163,184,0.07); }
+
+    /* ── Hobbies ── */
+    .hobbies-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; }
 
     .hobby-card {
       flex: 1;
@@ -362,83 +355,9 @@
       transform: translateY(-3px);
     }
 
-    .hobby-glyph {
-      display: block;
-      font-size: 1.9rem;
-      line-height: 1;
-      margin-bottom: 0.6rem;
-    }
-
-    .hobby-name {
-      font-size: 0.87rem;
-      font-weight: 700;
-      color: #ecf2f8;
-      margin-bottom: 0.2rem;
-    }
-
-    .hobby-note {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    /* ── News ── */
-    .news-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .news-item {
-      display: flex;
-      gap: 1.4rem;
-      align-items: flex-start;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .news-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .news-item:first-child {
-      padding-top: 0;
-    }
-
-    .news-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text-accent);
-      white-space: nowrap;
-      min-width: 72px;
-      padding-top: 0.18rem;
-      letter-spacing: 0.04em;
-    }
-
-    .news-content {
-      font-size: 0.9rem;
-      color: var(--text-main);
-      line-height: 1.6;
-    }
-
-    .news-tag {
-      display: inline-block;
-      font-size: 0.67rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      padding: 1px 7px;
-      border-radius: 20px;
-      margin-right: 0.45rem;
-      vertical-align: middle;
-      border: 1px solid;
-    }
-
-    .tag-paper  { color: #a8dadc; border-color: rgba(168,218,220,0.4); background: rgba(168,218,220,0.07); }
-    .tag-talk   { color: #f4a261; border-color: rgba(244,162, 97,0.4); background: rgba(244,162, 97,0.07); }
-    .tag-award  { color: #c4b5fd; border-color: rgba(196,181,253,0.4); background: rgba(196,181,253,0.07); }
-    .tag-misc   { color: #94a3b8; border-color: rgba(148,163,184,0.4); background: rgba(148,163,184,0.07); }
+    .hobby-glyph { display: block; font-size: 1.9rem; line-height: 1; margin-bottom: 0.6rem; }
+    .hobby-name { font-size: 0.87rem; font-weight: 700; color: #ecf2f8; margin-bottom: 0.2rem; }
+    .hobby-note { font-size: 0.76rem; color: var(--text-muted); font-style: italic; }
 
     /* ── CV Modal ── */
     .cv-modal {
@@ -483,11 +402,7 @@
       color: var(--text-accent);
     }
 
-    .cv-modal-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+    .cv-modal-actions { display: flex; align-items: center; gap: 0.6rem; }
 
     .cv-download {
       font-size: 0.75rem;
@@ -501,10 +416,7 @@
       letter-spacing: 0.04em;
     }
 
-    .cv-download:hover {
-      color: var(--text-accent);
-      border-color: var(--text-accent);
-    }
+    .cv-download:hover { color: var(--text-accent); border-color: var(--text-accent); }
 
     .cv-close {
       background: none;
@@ -520,13 +432,7 @@
     }
 
     .cv-close:hover { color: var(--link-hover); }
-
-    .cv-modal-inner iframe {
-      flex: 1;
-      width: 100%;
-      border: none;
-      display: block;
-    }
+    .cv-modal-inner iframe { flex: 1; width: 100%; border: none; display: block; }
 
     /* Footer */
     footer {
@@ -539,9 +445,7 @@
 
     /* ── Responsive ── */
     @media (max-width: 620px) {
-      .header-inner { flex-direction: column-reverse; gap: 1.5rem; }
-      h1 { font-size: 1.9rem; }
-      .dna-box { align-self: center; }
+      h1 { font-size: 2rem; }
       section { padding: 1.4rem 1.1rem; }
       nav { gap: 0.3rem 0.9rem; }
       .news-item { flex-direction: column; gap: 0.25rem; }
@@ -555,153 +459,70 @@
 <nav>
   <a href="#about">About</a>
   <a href="#news">News</a>
-  <a href="#education">Education</a>
-  <a href="#research">Research</a>
   <a href="#publications">Publications</a>
+  <a href="#talks">Talks</a>
   <a href="#awards">Awards</a>
-  <a href="#teaching">Teaching</a>
   <a href="#hobbies">Hobbies</a>
 </nav>
 
 <!-- ──────────────── Header ──────────────── -->
 <header>
-
-  <!-- Tulip field background -->
-  <svg class="tulip-bg" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
-    <!-- Tulip 1 -->
-    <g transform="translate(80, 30)">
-      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
-      <path d="M40 260 Q10 235 5 205 Q28 220 40 245" fill="#a8dadc"/>
-      <path d="M40 290 Q70 265 75 235 Q52 252 40 275" fill="#a8dadc"/>
-      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
-      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
-    </g>
-    <!-- Tulip 2 -->
-    <g transform="translate(200, 60) scale(0.75)">
-      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
-      <path d="M40 270 Q10 245 5 215 Q28 230 40 255" fill="#a8dadc"/>
-      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
-      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
-    </g>
-    <!-- Tulip 3 -->
-    <g transform="translate(310, 20) scale(0.9)">
-      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
-      <path d="M40 260 Q10 235 5 205 Q28 220 40 245" fill="#a8dadc"/>
-      <path d="M40 295 Q70 270 75 240 Q52 258 40 280" fill="#a8dadc"/>
-      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
-      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
-    </g>
-    <!-- Tulip 4 -->
-    <g transform="translate(430, 50) scale(0.65)">
-      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
-      <path d="M40 265 Q70 240 75 210 Q52 228 40 250" fill="#a8dadc"/>
-      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
-      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
-    </g>
-    <!-- Tulip 5 -->
-    <g transform="translate(900, 15) scale(1.1)">
-      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
-      <path d="M40 255 Q10 230 5 200 Q28 215 40 240" fill="#a8dadc"/>
-      <path d="M40 285 Q70 260 75 230 Q52 248 40 270" fill="#a8dadc"/>
-      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
-      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
-    </g>
-    <!-- Tulip 6 -->
-    <g transform="translate(1020, 40) scale(0.8)">
-      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
-      <path d="M40 270 Q10 245 5 215 Q28 230 40 255" fill="#a8dadc"/>
-      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
-      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
-    </g>
-    <!-- Tulip 7 -->
-    <g transform="translate(1130, 10) scale(0.7)">
-      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
-      <path d="M40 260 Q70 235 75 205 Q52 222 40 245" fill="#a8dadc"/>
-      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q8 170 18 130 Q36 162 40 185" fill="#a8dadc"/>
-      <path d="M40 200 Q72 170 62 130 Q44 162 40 185" fill="#a8dadc"/>
-    </g>
-    <!-- Tulip 8 -->
-    <g transform="translate(560, 70) scale(0.55)">
-      <line x1="40" y1="370" x2="40" y2="200" stroke="#a8dadc" stroke-width="4" stroke-linecap="round"/>
-      <path d="M40 255 Q10 230 5 200 Q28 215 40 240" fill="#a8dadc"/>
-      <path d="M40 200 Q20 155 28 115 Q40 148 40 175" fill="#a8dadc"/>
-      <path d="M40 200 Q60 155 52 115 Q40 148 40 175" fill="#a8dadc"/>
-    </g>
-  </svg>
+  <!-- Static DNA double helix background -->
+  <canvas id="dna-bg"></canvas>
 
   <!-- DNA base sequence ticker -->
-  <div class="seq-ticker" id="seq-ticker">ATCGATCGGCTATGCAAGTCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCA</div>
+  <div class="seq-ticker">ATCGATCGGCTATGCAAGTCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCA</div>
 
   <div class="header-inner">
-    <div class="header-text">
-      <h1>Sambina Islam Aninta</h1>
-      <p class="subtitle">PhD Student &bull; Biomedical Engineering &amp; Computational Genomics</p>
+    <h1>Sambina Islam Aninta</h1>
+    <p class="subtitle">PhD Student &bull; Biomedical Engineering &amp; Computational Genomics</p>
 
-      <!-- Icon-based contact links -->
-      <div class="contact-icons">
+    <div class="contact-icons">
 
-        <!-- Email -->
-        <a href="mailto:sambina.aninta@ubc.ca" class="icon-link" data-tip="sambina.aninta@ubc.ca">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-        </a>
+      <!-- Email -->
+      <a href="mailto:sambina.aninta@ubc.ca" class="icon-link" data-tip="sambina.aninta@ubc.ca">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+      </a>
 
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/sambina-islam-aninta-7b3004186/" class="icon-link" target="_blank" rel="noopener" data-tip="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-        </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/sambina-islam-aninta-7b3004186/" class="icon-link" target="_blank" rel="noopener" data-tip="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
 
-        <!-- Google Scholar -->
-        <a href="https://scholar.google.com/citations?user=z4xzIXUAAAAJ&hl=en" class="icon-link" target="_blank" rel="noopener" data-tip="Google Scholar">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2 2 8.5l3.5 2V18l6.5 3.5L18.5 18v-7.5L22 8.5 12 2z" opacity="0.85"/>
-            <path d="M12 2 2 8.5l10 5.8 10-5.8L12 2z" opacity="0.5"/>
-          </svg>
-        </a>
+      <!-- Google Scholar -->
+      <a href="https://scholar.google.com/citations?user=z4xzIXUAAAAJ&hl=en" class="icon-link" target="_blank" rel="noopener" data-tip="Google Scholar">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2 2 8.5l3.5 2V18l6.5 3.5L18.5 18v-7.5L22 8.5 12 2z" opacity="0.85"/>
+          <path d="M12 2 2 8.5l10 5.8 10-5.8L12 2z" opacity="0.5"/>
+        </svg>
+      </a>
 
-        <!-- GitHub -->
-        <a href="https://github.com/saninta0212" class="icon-link" target="_blank" rel="noopener" data-tip="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-        </a>
+      <!-- GitHub -->
+      <a href="https://github.com/saninta0212" class="icon-link" target="_blank" rel="noopener" data-tip="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
 
-        <!-- CV -->
-        <a href="#" class="icon-link" id="cv-btn" data-tip="View CV">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-          <span class="icon-label">CV</span>
-        </a>
+      <!-- CV -->
+      <a href="#" class="icon-link" id="cv-btn" data-tip="View CV">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <span class="icon-label">CV</span>
+      </a>
 
-      </div>
-    </div>
-    <div class="dna-box">
-      <canvas id="helix" width="80" height="230"></canvas>
     </div>
   </div>
 </header>
@@ -773,112 +594,32 @@
     </div>
   </section>
 
-  <section id="education">
-    <h2><span class="h2-tulip">❀</span> Education</h2>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">University of British Columbia</span>
-        <span class="entry-date">2025 &ndash; Present</span>
-      </div>
-      <div class="entry-sub">PhD in Biomedical Engineering</div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">University of British Columbia</span>
-        <span class="entry-date">2018 &ndash; 2023</span>
-      </div>
-      <div class="entry-sub">Bachelor of Science in Combined Honours Computer Science and Biology &mdash; Average: 90%</div>
-      <ul>
-        <li>Graduated with distinction and Co-operative education (Co-op Fall 2020 &ndash; Fall 2021)</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="research">
-    <h2><span class="h2-tulip">❀</span> Research Experience</h2>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">Research Assistant / Research Technician III</span>
-        <span class="entry-date">January 2024 &ndash; Present</span>
-      </div>
-      <div class="entry-sub">de Boer Lab, School of Biomedical Engineering, UBC</div>
-      <ul>
-        <li>Developing multi-modal machine learning pipeline to study variant effect in T-cells for autoimmune diseases using ATAC-seq and MPRA data to predict chromatin accessibility and expression</li>
-        <li>Leading project to study how variant position modulates functional impact in MPRA <em>(manuscript in progress)</em></li>
-        <li>Developing a framework to comprehensively evaluate and benchmark interpretability of deep neural networks for genomics</li>
-        <li>Developing a generative deep learning model to predict single fiber chromatin accessibility from DNA sequence</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">Undergraduate Research Assistant</span>
-        <span class="entry-date">September 2022 &ndash; May 2023</span>
-      </div>
-      <div class="entry-sub">Tam Lab, School of Biomedical Engineering, UBC</div>
-      <ul>
-        <li>Led an independent research study as part of Honours Thesis to develop and analyze Supervised Learning models to predict severity of exacerbation for COPD patients</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">Data Informatics / Molecular Biology Co-op</span>
-        <span class="entry-date">May 2021 &ndash; December 2021</span>
-      </div>
-      <div class="entry-sub">Amgen</div>
-      <ul>
-        <li>Developed and tested novel methodologies to support <em>in vitro</em> and <em>in vivo</em> human antibody discovery platforms</li>
-        <li>Performed laboratory tasks: RNA extraction, RNA purification, cDNA synthesis and gene amplification from single B cells, cultured B cells and hybridomas</li>
-        <li>Designed and built a Dash web app to visualize immune repertoire containing thousands of sequences, deployed in Kubernetes &mdash; increased efficiency of sequence discovery platforms</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">Bioinformatics Technology Lab Co-op</span>
-        <span class="entry-date">September 2020 &ndash; April 2021</span>
-      </div>
-      <div class="entry-sub">Birol Lab, Canada&rsquo;s Michael Smith Genome Sciences Centre at BC Cancer</div>
-      <ul>
-        <li>Co-developed an <em>in silico</em> pipeline to discover novel antimicrobial peptides (AMPs) from amphibian and insect transcriptomic data as antibiotic alternatives</li>
-        <li>Implemented scripts in Bash, Python, and R to assemble bulk RNA-seq reads, translate and cleave sequences reflecting post-translational modifications, tested on 84 datasets on a remote HPC server</li>
-        <li>Tested whether predicted AMPs were differentially expressed in amphibians when exposed to pathogens using R and Bash</li>
-      </ul>
-    </div>
-  </section>
-
+  <!-- ── Publications preview ── -->
   <section id="publications">
-    <h2><span class="h2-tulip">❀</span> Publications &amp; Talks</h2>
-
-    <div class="pub-label">Publications</div>
-    <ul>
+    <h2><span class="h2-tulip">❀</span> Publications</h2>
+    <ul class="preview-list">
       <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>(in prep.)</em></li>
-      <li>Lin D, Sutherland D, Aninta SI, et al. Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage. <em>Antibiotics (Basel).</em> 2022;11(7):952. doi:10.3390/antibiotics11070952.</li>
-      <li>Li C, Sutherland D, Salehi A, Lin D, Aninta SI, et al. Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides. <em>Protein Science.</em> 2025;18(5):34. doi:10.1101/2024.05.24.595811.</li>
+      <li>Li C, Sutherland D, Salehi A, Lin D, Aninta SI, et al. Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides. <em>Protein Science.</em> 2025.</li>
+      <li>Lin D, Sutherland D, Aninta SI, et al. Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage. <em>Antibiotics (Basel).</em> 2022.</li>
     </ul>
+    <div class="view-all"><a href="publications.html">View full list &amp; reviews &rarr;</a></div>
+  </section>
 
-    <div class="pub-label">Poster Presentations</div>
-    <ul>
-      <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>Biology of Genomes, CSHL;</em> 2025.</li>
+  <!-- ── Talks preview ── -->
+  <section id="talks">
+    <h2><span class="h2-tulip">❀</span> Talks &amp; Posters</h2>
+    <ul class="preview-list">
+      <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in MPRAs. <em>Biology of Genomes, CSHL;</em> 2025.</li>
       <li>Aninta SI, Rafi AM, de Boer C. How does data leakage from genomics foundational models inflate downstream model performance? <em>Biological Data Science, CSHL;</em> 2024.</li>
       <li>Aninta SI, Rafi AM, de Boer C. How much of transfer learning is actually cheating? <em>MLCB;</em> 2024.</li>
-      <li>Aninta SI, Rafi AM, de Boer C. Predicting variant effects using multimodal deep neural networks in autoimmune diseases. <em>SynBio6.0;</em> 2024.</li>
-      <li>Lin D, Nip KM, Aninta SI, Li C, Warren RL, et al. rAMPage: Rapid antimicrobial peptide annotation and gene estimation. <em>ISMB;</em> 2021.</li>
     </ul>
-
-    <div class="pub-label">Reviewing</div>
-    <ul>
-      <li>Cell Genomics (2025)</li>
-    </ul>
+    <div class="view-all"><a href="talks.html">View all talks &rarr;</a></div>
   </section>
 
+  <!-- ── Awards preview ── -->
   <section id="awards">
     <h2><span class="h2-tulip">❀</span> Awards &amp; Scholarships</h2>
-    <table class="awards-table">
+    <table class="awards-preview">
       <tbody>
         <tr>
           <td>President&rsquo;s Academic Excellence Initiative PhD Award</td>
@@ -887,7 +628,7 @@
         <tr>
           <td>
             KM International Leader of Tomorrow (KMILOT) Award
-            <div class="award-desc">Full-ride scholarship (~250k CAD) for outstanding leadership, awarded to 34 incoming international students annually</div>
+            <div class="award-desc">Full-ride scholarship (~250k CAD) for outstanding leadership</div>
           </td>
           <td>2018&ndash;2023</td>
         </tr>
@@ -898,111 +639,9 @@
           </td>
           <td>2019&ndash;2020, 2022&ndash;2023</td>
         </tr>
-        <tr>
-          <td>
-            UBC Science Scholar
-            <div class="award-desc">Above 90% average</div>
-          </td>
-          <td>2018&ndash;2019, 2021&ndash;2023</td>
-        </tr>
-        <tr>
-          <td>
-            UBC Dean&rsquo;s Honour List
-            <div class="award-desc">Above 80% GPA</div>
-          </td>
-          <td>2018&ndash;2020, 2021&ndash;2023</td>
-        </tr>
-        <tr>
-          <td>
-            UBC Faculty of Science International Student Scholarship
-            <div class="award-desc">Strong academic achievement (7,700 CAD)</div>
-          </td>
-          <td>2021&ndash;2023</td>
-        </tr>
-        <tr>
-          <td>
-            UBC Clayton Person Memorial Scholarship in Biology
-            <div class="award-desc">Highest standing in BIOL 234/335 (Genetics) with faculty recommendation (750 CAD)</div>
-          </td>
-          <td>2021&ndash;2022</td>
-        </tr>
-        <tr>
-          <td>
-            UBC Charles and Jane Banks Scholarship
-            <div class="award-desc">Faculty recommendation for academic excellence (270 CAD)</div>
-          </td>
-          <td>2022&ndash;2023</td>
-        </tr>
-        <tr>
-          <td>
-            UBC J Fred Muir Memorial Scholarship in Science
-            <div class="award-desc">Faculty recommendation for academic excellence (350 CAD)</div>
-          </td>
-          <td>2019&ndash;2020</td>
-        </tr>
-        <tr>
-          <td>
-            Department of Computer Science Scholarship for vGHC
-            <div class="award-desc">Selected to attend virtual Grace Hopper Celebration, the largest conference for Women in Computing</div>
-          </td>
-          <td>2021</td>
-        </tr>
       </tbody>
     </table>
-  </section>
-
-  <section id="teaching">
-    <h2><span class="h2-tulip">❀</span> Teaching &amp; Leadership</h2>
-
-    <div class="pub-label">Teaching</div>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">Teaching Assistant &ndash; Applied Machine Learning (CPSC 330)</span>
-        <span class="entry-date">May 2023 &ndash; June 2023</span>
-      </div>
-      <div class="entry-sub">University of British Columbia</div>
-      <ul>
-        <li>Selected by the instructor to TA for scoring a very high grade (94%)</li>
-        <li>Delivered weekly tutorials, held office hours, and monitored Piazza to assist students with ML foundations and programming environments</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">AMS Tutoring Supervisor</span>
-        <span class="entry-date">September 2019 &ndash; April 2021</span>
-      </div>
-      <div class="entry-sub">Alma Mater Society, University of British Columbia</div>
-      <ul>
-        <li>Tutored students in one-on-one and group settings for first and second year Science courses</li>
-      </ul>
-    </div>
-
-    <div class="pub-label">Leadership</div>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">BC Director of Communications &ndash; Nucleate Canada</span>
-        <span class="entry-date">June 2024 &ndash; May 2025</span>
-      </div>
-      <div class="entry-sub">Nucleate Canada, British Columbia</div>
-      <ul>
-        <li>Spearheaded the regional communications team for the Nucleate Activator program in BC, providing equity-free, pre-IP support to graduate students translating research into life sciences ventures</li>
-        <li>Facilitated cross-disciplinary team matching and coordinated 1-on-1 venture-building workshops with industry mentors, leading to a national pitch competition with Canada-wide partners</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-header">
-        <span class="entry-title">President &ndash; UBC STEM Fellowship</span>
-        <span class="entry-date">March 2021 &ndash; May 2023</span>
-      </div>
-      <ul>
-        <li>Led a team of 10 executives; coordinated the REO program providing high school students from underrepresented groups in STEM with hands-on research experience at UBC</li>
-        <li>Organized STEMpowerment, a mentorship program pairing youth from underrepresented groups with UBC student mentors</li>
-      </ul>
-    </div>
+    <div class="view-all"><a href="awards.html">View all awards &rarr;</a></div>
   </section>
 
   <!-- ── Hobbies ── -->
@@ -1013,11 +652,6 @@
         <span class="hobby-glyph">🏺</span>
         <div class="hobby-name">Pottery</div>
         <div class="hobby-note">Throwing on the wheel &amp; hand-building</div>
-      </div>
-      <div class="hobby-card">
-        <span class="hobby-glyph">🌷</span>
-        <div class="hobby-name">Tulips</div>
-        <div class="hobby-note">Growing &amp; collecting tulip varieties</div>
       </div>
       <div class="hobby-card">
         <span class="hobby-glyph">🏃</span>
@@ -1038,90 +672,70 @@
   &copy; 2026 Sambina Islam Aninta
 </footer>
 
-<!-- ──────────────── DNA Helix Animation ──────────────── -->
 <script>
+// ── Static DNA double helix background ──
 (function () {
-  const canvas = document.getElementById('helix');
-  if (!canvas) return;
+  const canvas = document.getElementById('dna-bg');
+  const header = canvas.parentElement;
   const dpr = window.devicePixelRatio || 1;
-  const W = 80, H = 230;
-  canvas.width  = W * dpr;
-  canvas.height = H * dpr;
-  canvas.style.width  = W + 'px';
-  canvas.style.height = H + 'px';
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
 
-  const cx = W / 2;
-  const amp = 22;
-  const turns = 2.5;
-  const STEPS = 200;
-  const RUNG_EVERY = 14;
+  function render() {
+    const W = header.offsetWidth;
+    const H = header.offsetHeight;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
 
-  const color1 = '#a8dadc';
-  const color2 = '#f4a261';
-  const rungColor = 'rgba(168, 218, 220, ';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
 
-  let phase = 0;
+    const STEPS  = 800;
+    const turns  = 5;
+    const midY   = H * 0.5;
+    const amp    = H * 0.24;
 
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    const pts1 = [];
-    const pts2 = [];
-
+    const pts1 = [], pts2 = [];
     for (let i = 0; i <= STEPS; i++) {
-      const t = (i / STEPS) * turns * 2 * Math.PI + phase;
-      const y = (i / STEPS) * H;
-      pts1.push({ x: cx + amp * Math.sin(t),       y });
-      pts2.push({ x: cx + amp * Math.sin(t + Math.PI), y });
+      const t = (i / STEPS) * turns * 2 * Math.PI;
+      const x = (i / STEPS) * W;
+      pts1.push({ x, y: midY + amp * Math.sin(t) });
+      pts2.push({ x, y: midY - amp * Math.sin(t) });
     }
 
-    for (let i = 0; i <= STEPS; i += RUNG_EVERY) {
+    // Rungs
+    for (let i = 0; i <= STEPS; i += 32) {
       const p1 = pts1[i], p2 = pts2[i];
-      const dx = p2.x - p1.x;
-      const spread = Math.abs(dx) / (2 * amp);
-      const alpha = spread * 0.55;
+      const spread = Math.abs(p2.y - p1.y) / (2 * amp);
+      if (spread < 0.08) continue;
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
-      ctx.strokeStyle = rungColor + alpha.toFixed(2) + ')';
-      ctx.lineWidth = 1.4;
-      ctx.lineCap = 'round';
+      ctx.strokeStyle = `rgba(168, 218, 220, ${(spread * 0.22).toFixed(3)})`;
+      ctx.lineWidth = 1.1;
       ctx.stroke();
-
-      if (spread > 0.15) {
-        ctx.beginPath();
-        ctx.arc(p1.x, p1.y, 1.6, 0, Math.PI * 2);
-        ctx.fillStyle = rungColor + (alpha * 1.4).toFixed(2) + ')';
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(p2.x, p2.y, 1.6, 0, Math.PI * 2);
-        ctx.fill();
-      }
     }
 
+    // Strand 1 — teal
     ctx.beginPath();
     ctx.moveTo(pts1[0].x, pts1[0].y);
     for (let i = 1; i <= STEPS; i++) ctx.lineTo(pts1[i].x, pts1[i].y);
-    ctx.strokeStyle = color1;
-    ctx.lineWidth = 2.2;
-    ctx.lineCap = 'round';
+    ctx.strokeStyle = 'rgba(168, 218, 220, 0.16)';
+    ctx.lineWidth = 1.8;
     ctx.lineJoin = 'round';
     ctx.stroke();
 
+    // Strand 2 — orange
     ctx.beginPath();
     ctx.moveTo(pts2[0].x, pts2[0].y);
     for (let i = 1; i <= STEPS; i++) ctx.lineTo(pts2[i].x, pts2[i].y);
-    ctx.strokeStyle = color2;
-    ctx.lineWidth = 2.2;
+    ctx.strokeStyle = 'rgba(244, 162, 97, 0.11)';
+    ctx.lineWidth = 1.8;
     ctx.stroke();
-
-    phase += 0.022;
-    requestAnimationFrame(draw);
   }
 
-  draw();
+  document.addEventListener('DOMContentLoaded', render);
+  window.addEventListener('resize', render);
 })();
 
 // ── CV Modal ──
@@ -1142,14 +756,8 @@
   }
 
   close.addEventListener('click', closeModal);
-
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeModal();
-  });
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 })();
 </script>
 

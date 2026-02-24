@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Awards &mdash; Sambina Islam Aninta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0d1b2a;
+      --bg-card: #101f30;
+      --text-main: #e0e6ed;
+      --text-accent: #a8dadc;
+      --text-muted: #627a8f;
+      --link-hover: #f4a261;
+      --border: rgba(168, 218, 220, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.75;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13, 27, 42, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.2rem 1.8rem;
+      padding: 0.7rem 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover { color: var(--text-accent); border-bottom-color: var(--text-accent); }
+    nav a.active { color: var(--text-accent); border-bottom-color: var(--text-accent); }
+
+    .page-hero {
+      background: linear-gradient(155deg, #0a1622 0%, #0d1b2a 60%, #162236 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem 2.5rem;
+    }
+
+    .page-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-hero-inner h1 {
+      margin: 0 0 0.3rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f1faee;
+      letter-spacing: -0.02em;
+    }
+
+    .page-hero-inner p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+    }
+
+    section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.9rem 2.2rem;
+    }
+
+    section h2 {
+      margin: 0 0 1.3rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-accent);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    section h2 .h2-tulip { display: inline-block; opacity: 0.75; font-size: 0.9rem; }
+
+    section h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .awards-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.89rem;
+    }
+
+    .awards-table tr:last-child td { border-bottom: none; }
+
+    .awards-table td {
+      padding: 0.75rem 0.5rem;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .awards-table td:last-child {
+      text-align: right;
+      white-space: nowrap;
+      color: var(--text-accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      padding-left: 1rem;
+    }
+
+    .award-desc {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    a { color: var(--text-accent); text-decoration: none; }
+    a:hover { color: var(--link-hover); }
+
+    footer {
+      text-align: center;
+      padding: 1.4rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 620px) {
+      section { padding: 1.4rem 1.1rem; }
+      nav { gap: 0.3rem 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">← Home</a>
+  <a href="index.html#news">News</a>
+  <a href="publications.html">Publications</a>
+  <a href="talks.html">Talks</a>
+  <a href="awards.html" class="active">Awards</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <h1>Awards &amp; Scholarships</h1>
+    <p>A full list of academic awards, fellowships, and scholarships.</p>
+  </div>
+</div>
+
+<main>
+  <section>
+    <h2><span class="h2-tulip">❀</span> Awards &amp; Scholarships</h2>
+    <table class="awards-table">
+      <tbody>
+        <tr>
+          <td>President&rsquo;s Academic Excellence Initiative PhD Award</td>
+          <td>2025&ndash;2026</td>
+        </tr>
+        <tr>
+          <td>
+            KM International Leader of Tomorrow (KMILOT) Award
+            <div class="award-desc">Full-ride scholarship (~250k CAD) for outstanding leadership, awarded to 34 incoming international students annually</div>
+          </td>
+          <td>2018&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Trek Excellence Scholarship
+            <div class="award-desc">Top 5% of Faculty, Year and School (6,000 CAD)</div>
+          </td>
+          <td>2019&ndash;2020, 2022&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Science Scholar
+            <div class="award-desc">Above 90% average</div>
+          </td>
+          <td>2018&ndash;2019, 2021&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Dean&rsquo;s Honour List
+            <div class="award-desc">Above 80% GPA</div>
+          </td>
+          <td>2018&ndash;2020, 2021&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Faculty of Science International Student Scholarship
+            <div class="award-desc">Strong academic achievement (7,700 CAD)</div>
+          </td>
+          <td>2021&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Clayton Person Memorial Scholarship in Biology
+            <div class="award-desc">Highest standing in BIOL 234/335 (Genetics) with faculty recommendation (750 CAD)</div>
+          </td>
+          <td>2021&ndash;2022</td>
+        </tr>
+        <tr>
+          <td>
+            UBC Charles and Jane Banks Scholarship
+            <div class="award-desc">Faculty recommendation for academic excellence (270 CAD)</div>
+          </td>
+          <td>2022&ndash;2023</td>
+        </tr>
+        <tr>
+          <td>
+            UBC J Fred Muir Memorial Scholarship in Science
+            <div class="award-desc">Faculty recommendation for academic excellence (350 CAD)</div>
+          </td>
+          <td>2019&ndash;2020</td>
+        </tr>
+        <tr>
+          <td>
+            Department of Computer Science Scholarship for vGHC
+            <div class="award-desc">Selected to attend virtual Grace Hopper Celebration, the largest conference for Women in Computing</div>
+          </td>
+          <td>2021</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  &copy; 2026 Sambina Islam Aninta
+</footer>
+
+</body>
+</html>
