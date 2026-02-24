@@ -125,20 +125,60 @@
       font-weight: 400;
     }
 
-    .contact-row {
+    /* ── Icon contact row ── */
+    .contact-icons {
       display: flex;
+      align-items: center;
+      gap: 0.85rem;
       flex-wrap: wrap;
-      gap: 0.3rem 1.3rem;
-      font-size: 0.87rem;
     }
 
-    .contact-row a {
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
       color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.2s, transform 0.2s;
+      position: relative;
     }
 
-    .contact-row a:hover { color: var(--link-hover); }
+    .icon-link svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .icon-link:hover {
+      color: var(--link-hover);
+      transform: translateY(-1px);
+    }
+
+    .icon-link .icon-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Tooltip */
+    .icon-link[data-tip]:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(10, 22, 35, 0.95);
+      color: var(--text-accent);
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      pointer-events: none;
+      z-index: 100;
+    }
 
     /* DNA canvas */
     .dna-box {
@@ -342,10 +382,150 @@
       font-style: italic;
     }
 
-    /* Contact */
-    #contact p {
-      margin: 0 0 0.45rem;
-      font-size: 0.92rem;
+    /* ── News ── */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 1.4rem;
+      align-items: flex-start;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .news-item:first-child {
+      padding-top: 0;
+    }
+
+    .news-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-accent);
+      white-space: nowrap;
+      min-width: 72px;
+      padding-top: 0.18rem;
+      letter-spacing: 0.04em;
+    }
+
+    .news-content {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .news-tag {
+      display: inline-block;
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 1px 7px;
+      border-radius: 20px;
+      margin-right: 0.45rem;
+      vertical-align: middle;
+      border: 1px solid;
+    }
+
+    .tag-paper  { color: #a8dadc; border-color: rgba(168,218,220,0.4); background: rgba(168,218,220,0.07); }
+    .tag-talk   { color: #f4a261; border-color: rgba(244,162, 97,0.4); background: rgba(244,162, 97,0.07); }
+    .tag-award  { color: #c4b5fd; border-color: rgba(196,181,253,0.4); background: rgba(196,181,253,0.07); }
+    .tag-misc   { color: #94a3b8; border-color: rgba(148,163,184,0.4); background: rgba(148,163,184,0.07); }
+
+    /* ── CV Modal ── */
+    .cv-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cv-modal.open { display: flex; }
+
+    .cv-modal-inner {
+      position: relative;
+      width: 92%;
+      max-width: 860px;
+      height: 92vh;
+      background: #1a2e47;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cv-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .cv-modal-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-accent);
+    }
+
+    .cv-modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .cv-download {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      transition: color 0.2s, border-color 0.2s;
+      letter-spacing: 0.04em;
+    }
+
+    .cv-download:hover {
+      color: var(--text-accent);
+      border-color: var(--text-accent);
+    }
+
+    .cv-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      line-height: 1;
+      padding: 2px 4px;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+
+    .cv-close:hover { color: var(--link-hover); }
+
+    .cv-modal-inner iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      display: block;
     }
 
     /* Footer */
@@ -364,6 +544,8 @@
       .dna-box { align-self: center; }
       section { padding: 1.4rem 1.1rem; }
       nav { gap: 0.3rem 0.9rem; }
+      .news-item { flex-direction: column; gap: 0.25rem; }
+      .news-date { min-width: unset; }
     }
   </style>
 </head>
@@ -372,13 +554,13 @@
 <!-- ──────────────── Navigation ──────────────── -->
 <nav>
   <a href="#about">About</a>
+  <a href="#news">News</a>
   <a href="#education">Education</a>
   <a href="#research">Research</a>
   <a href="#publications">Publications</a>
   <a href="#awards">Awards</a>
   <a href="#teaching">Teaching</a>
   <a href="#hobbies">Hobbies</a>
-  <a href="#contact">Contact</a>
 </nav>
 
 <!-- ──────────────── Header ──────────────── -->
@@ -468,11 +650,54 @@
     <div class="header-text">
       <h1>Sambina Islam Aninta</h1>
       <p class="subtitle">PhD Student &bull; Biomedical Engineering &amp; Computational Genomics</p>
-      <div class="contact-row">
-        <a href="mailto:sambina.islam@gmail.com">sambina.islam@gmail.com</a>
-        <a href="https://www.linkedin.com/in/sambina-islam-aninta" target="_blank">LinkedIn</a>
-        <a href="https://github.com/saninta0212" target="_blank">GitHub</a>
-        <a href="cv.pdf" target="_blank">CV ↗</a>
+
+      <!-- Icon-based contact links -->
+      <div class="contact-icons">
+
+        <!-- Email -->
+        <a href="mailto:sambina.aninta@ubc.ca" class="icon-link" data-tip="sambina.aninta@ubc.ca">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/sambina-islam-aninta-7b3004186/" class="icon-link" target="_blank" rel="noopener" data-tip="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+
+        <!-- Google Scholar -->
+        <a href="https://scholar.google.com/citations?user=z4xzIXUAAAAJ&hl=en" class="icon-link" target="_blank" rel="noopener" data-tip="Google Scholar">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2 2 8.5l3.5 2V18l6.5 3.5L18.5 18v-7.5L22 8.5 12 2z" opacity="0.85"/>
+            <path d="M12 2 2 8.5l10 5.8 10-5.8L12 2z" opacity="0.5"/>
+          </svg>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/saninta0212" class="icon-link" target="_blank" rel="noopener" data-tip="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+
+        <!-- CV -->
+        <a href="#" class="icon-link" id="cv-btn" data-tip="View CV">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span class="icon-label">CV</span>
+        </a>
+
       </div>
     </div>
     <div class="dna-box">
@@ -480,6 +705,20 @@
     </div>
   </div>
 </header>
+
+<!-- ──────────────── CV Modal ──────────────── -->
+<div id="cv-modal" class="cv-modal" role="dialog" aria-modal="true" aria-label="CV">
+  <div class="cv-modal-inner">
+    <div class="cv-modal-header">
+      <span class="cv-modal-title">Sambina Islam Aninta &mdash; CV</span>
+      <div class="cv-modal-actions">
+        <a href="Sambina_Aninta.pdf" download class="cv-download">Download PDF</a>
+        <button class="cv-close" id="cv-close" aria-label="Close">&times;</button>
+      </div>
+    </div>
+    <iframe src="Sambina_Aninta.pdf" title="CV PDF"></iframe>
+  </div>
+</div>
 
 <!-- ──────────────── Main Content ──────────────── -->
 <main>
@@ -492,6 +731,46 @@
       applying machine learning and deep learning to regulatory genomics &mdash; studying how genetic variants
       affect chromatin accessibility and gene expression, with applications in autoimmune disease.
     </p>
+  </section>
+
+  <!-- ── News ── -->
+  <section id="news">
+    <h2><span class="h2-tulip">❀</span> News</h2>
+    <div class="news-list">
+
+      <div class="news-item">
+        <div class="news-date">Feb 2026</div>
+        <div class="news-content">
+          <span class="news-tag tag-misc">New</span>
+          Started my PhD in Biomedical Engineering at UBC, joining the de Boer Lab.
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">May 2025</div>
+        <div class="news-content">
+          <span class="news-tag tag-talk">Talk</span>
+          Presented poster at <em>Biology of Genomes, CSHL</em> &mdash; Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays.
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">Nov 2024</div>
+        <div class="news-content">
+          <span class="news-tag tag-talk">Talk</span>
+          Presented at <em>MLCB 2024</em> and <em>Biological Data Science, CSHL</em> on data leakage in genomic foundation models.
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2025</div>
+        <div class="news-content">
+          <span class="news-tag tag-award">Award</span>
+          Received the President&rsquo;s Academic Excellence Initiative PhD Award.
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <section id="education">
@@ -753,18 +1032,10 @@
     </div>
   </section>
 
-  <section id="contact">
-    <h2><span class="h2-tulip">❀</span> Contact</h2>
-    <p>Email: <a href="mailto:sambina.islam@gmail.com">sambina.islam@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/sambina-islam-aninta" target="_blank">linkedin.com/in/sambina-islam-aninta</a></p>
-    <p>GitHub: <a href="https://github.com/saninta0212" target="_blank">github.com/saninta0212</a></p>
-    <p>CV: <a href="cv.pdf" target="_blank">Download PDF ↗</a></p>
-  </section>
-
 </main>
 
 <footer>
-  &copy; 2025 Sambina Islam Aninta
+  &copy; 2026 Sambina Islam Aninta
 </footer>
 
 <!-- ──────────────── DNA Helix Animation ──────────────── -->
@@ -781,15 +1052,14 @@
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
 
-  const cx = W / 2;       // center x
-  const amp = 22;         // helix amplitude
-  const turns = 2.5;      // number of full turns visible
-  const STEPS = 200;      // path resolution
-  const RUNG_EVERY = 14;  // draw a rung every N steps
+  const cx = W / 2;
+  const amp = 22;
+  const turns = 2.5;
+  const STEPS = 200;
+  const RUNG_EVERY = 14;
 
-  // Color palettes
-  const color1 = '#a8dadc';  // teal strand
-  const color2 = '#f4a261';  // warm strand
+  const color1 = '#a8dadc';
+  const color2 = '#f4a261';
   const rungColor = 'rgba(168, 218, 220, ';
 
   let phase = 0;
@@ -807,13 +1077,10 @@
       pts2.push({ x: cx + amp * Math.sin(t + Math.PI), y });
     }
 
-    // ── Draw rungs (behind strands) ──
     for (let i = 0; i <= STEPS; i += RUNG_EVERY) {
       const p1 = pts1[i], p2 = pts2[i];
       const dx = p2.x - p1.x;
-      // opacity based on how spread-apart the strands are
       const spread = Math.abs(dx) / (2 * amp);
-      // front rungs are more opaque than back rungs
       const alpha = spread * 0.55;
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
@@ -823,7 +1090,6 @@
       ctx.lineCap = 'round';
       ctx.stroke();
 
-      // Small dot at rung endpoints
       if (spread > 0.15) {
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, 1.6, 0, Math.PI * 2);
@@ -835,7 +1101,6 @@
       }
     }
 
-    // ── Draw strand 1 ──
     ctx.beginPath();
     ctx.moveTo(pts1[0].x, pts1[0].y);
     for (let i = 1; i <= STEPS; i++) ctx.lineTo(pts1[i].x, pts1[i].y);
@@ -845,7 +1110,6 @@
     ctx.lineJoin = 'round';
     ctx.stroke();
 
-    // ── Draw strand 2 ──
     ctx.beginPath();
     ctx.moveTo(pts2[0].x, pts2[0].y);
     for (let i = 1; i <= STEPS; i++) ctx.lineTo(pts2[i].x, pts2[i].y);
@@ -858,6 +1122,34 @@
   }
 
   draw();
+})();
+
+// ── CV Modal ──
+(function () {
+  const btn   = document.getElementById('cv-btn');
+  const modal = document.getElementById('cv-modal');
+  const close = document.getElementById('cv-close');
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  close.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
 })();
 </script>
 
