@@ -333,6 +333,17 @@
     }
 
     /* Publications */
+    .pub-group { margin-bottom: 1.5rem; }
+
+    .pub-group-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-subtle);
+      margin: 0 0 0.5rem;
+    }
+
     .pub-list { list-style: none; padding: 0; margin: 0; }
 
     .pub-list li {
@@ -445,7 +456,7 @@
     <ul class="masthead__menu">
       <li><a href="#about">Home</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="talks.html">Talks</a></li>
+      <li><a href="talks.html">Presentations</a></li>
       <li><a href="teaching.html">Teaching &amp; Leadership</a></li>
       <li><a href="hobbies.html">Hobbies</a></li>
       <li><a href="Sambina_Aninta.pdf" target="_blank">CV</a></li>
@@ -535,14 +546,35 @@
 
     <!-- Publications -->
     <section id="publications">
-      <h2>Selected Publications</h2>
-      <ul class="pub-list">
-        <li>
-          <a class="pub-title" href="https://www.biorxiv.org/content/10.64898/2026.03.17.712488" target="_blank" rel="noopener">Position-dependent variant effects reveal importance of context in genomic regulation</a>
-          <span class="pub-authors">Aninta SI, Tewhey R, de Boer C. </span>
-          <span class="pub-venue">bioRxiv. 2026.</span>
-        </li>
-      </ul>
+      <h2>Publications</h2>
+
+      <div class="pub-group">
+        <p class="pub-group-label">Genomics &times; AI</p>
+        <ul class="pub-list">
+          <li>
+            <a class="pub-title" href="https://www.biorxiv.org/content/10.64898/2026.03.17.712488" target="_blank" rel="noopener">Position-dependent variant effects reveal importance of context in genomic regulation</a>
+            <span class="pub-authors">Aninta SI, Tewhey R, de Boer CG.</span>
+            <span class="pub-venue"> <em>bioRxiv.</em> 2026.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-group">
+        <p class="pub-group-label">Antimicrobial Peptides</p>
+        <ul class="pub-list">
+          <li>
+            <span class="pub-title">Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides</span>
+            <span class="pub-authors">Li C, Sutherland D, Salehi A, Lin D, Nip KM, Aninta SI, Warren RL, Birol I.</span>
+            <span class="pub-venue"> <em>Protein Science.</em> 2025.</span>
+          </li>
+          <li>
+            <span class="pub-title">Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage</span>
+            <span class="pub-authors">Lin D, Sutherland D, Aninta SI, Li C, Nip KM, Warren RL, Birol I.</span>
+            <span class="pub-venue"> <em>Antibiotics (Basel).</em> 2022.</span>
+          </li>
+        </ul>
+      </div>
+
     </section>
 
     <!-- News -->
@@ -551,39 +583,39 @@
       <div class="news-scroll">
         <ul class="news-list">
           <li class="news-item">
-            <span class="news-date">2026</span>
-            <span>New preprint: <strong>Position-dependent variant effects reveal importance of context in genomic regulation.</strong> <em>bioRxiv.</em></span>
-          </li>
-          <li class="news-item">
-            <span class="news-date">2026</span>
+            <span class="news-date">Jul 2026</span>
             <span>Talk at <strong>Intelligent Systems for Molecular Biology (ISMB)</strong> — Position-dependent variant effects reveal importance of context in genomic regulation.</span>
           </li>
           <li class="news-item">
-            <span class="news-date">2026</span>
+            <span class="news-date">May 2026</span>
             <span>Poster at <strong>CSHL 90th Symposium AI in Biology</strong> — Position-dependent variant effects reveal importance of context in genomic regulation.</span>
           </li>
           <li class="news-item">
-            <span class="news-date">2026</span>
+            <span class="news-date">Mar 2026</span>
+            <span>New preprint: <strong>Position-dependent variant effects reveal importance of context in genomic regulation.</strong> <em>bioRxiv.</em></span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">Mar 2026</span>
             <span>Awarded the <strong>UBC Four Year Doctoral Fellowship (4YF)</strong> ($72,000), <strong>SBME Travel Award</strong> ($1,500), and <strong>ISMB Travel Fellowship</strong> ($1,047).</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">Sep 2025</span>
+            <span>Awarded the <strong>President's Academic Excellence Initiative PhD Award</strong> ($1,000) and <strong>BIPOC Graduate Excellence Award</strong> ($1,500).</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">May 2025</span>
+            <span>Poster at <strong>Biology of Genomes, CSHL</strong> — Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays.</span>
           </li>
           <li class="news-item">
             <span class="news-date">2025</span>
             <span>Started PhD in Biomedical Engineering at UBC, joining the de Boer Lab.</span>
           </li>
           <li class="news-item">
-            <span class="news-date">2025</span>
-            <span>Poster at <strong>Biology of Genomes, CSHL</strong> — Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays.</span>
-          </li>
-          <li class="news-item">
-            <span class="news-date">2025</span>
-            <span>Awarded the <strong>President's Academic Excellence Initiative PhD Award</strong> ($1,000) and <strong>BIPOC Graduate Excellence Award</strong> ($1,500).</span>
-          </li>
-          <li class="news-item">
-            <span class="news-date">2024</span>
+            <span class="news-date">Nov 2024</span>
             <span>Poster at <strong>Biological Data Science, CSHL</strong> — How does data leakage from genomics foundational models inflate downstream model performance?</span>
           </li>
           <li class="news-item">
-            <span class="news-date">2024</span>
+            <span class="news-date">Sep 2024</span>
             <span>Poster at <strong>MLCB 2024</strong> — How much of transfer learning is actually cheating?</span>
           </li>
           <li class="news-item">
