@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talks &amp; Posters — Sambina Islam Aninta</title>
+  <title>Hobbies — Sambina Islam Aninta</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌷</text></svg>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -26,6 +26,8 @@
       --footer-link:  rgba(255,255,255,0.85);
       --avatar-border:#e5e5e5;
       --sidebar-hover:#f5f8fb;
+      --card-bg:      #fafafa;
+      --card-border:  #ececec;
     }
 
     body.dark {
@@ -44,6 +46,8 @@
       --footer-link:  rgba(205,213,224,0.8);
       --avatar-border:#2d3e57;
       --sidebar-hover:#1e2a3e;
+      --card-bg:      #1e2a3e;
+      --card-border:  #2d3e57;
     }
 
     body {
@@ -58,6 +62,7 @@
     a { color: var(--link); text-decoration: none; }
     a:hover { color: var(--link-hover); text-decoration: underline; }
 
+    /* Masthead */
     .masthead {
       position: sticky;
       top: 0;
@@ -110,6 +115,7 @@
 
     .theme-toggle:hover { color: var(--nav-hover); }
 
+    /* Layout */
     .page__wrapper {
       max-width: 1500px;
       margin: 0 auto;
@@ -120,6 +126,7 @@
       align-items: start;
     }
 
+    /* Sidebar */
     .sidebar { position: sticky; top: 76px; }
 
     .author__avatar { display: block; text-align: center; margin-bottom: 1.1rem; }
@@ -177,7 +184,9 @@
 
     .author__urls li a:hover .bluesky-icon { fill: var(--link); }
 
+    /* Main content */
     .page__content section { margin-bottom: 2.5rem; }
+
     .page__content h1 { font-size: 2.1rem; margin: 0 0 0.35rem; color: var(--text); }
     .page-subtitle { font-size: 1.1rem; color: var(--text-subtle); margin: 0 0 1.5rem; font-weight: 400; }
 
@@ -185,39 +194,67 @@
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--text);
-      margin: 0 0 0.75rem;
+      margin: 0 0 1rem;
       padding-bottom: 0.35rem;
       border-bottom: 2px solid var(--border);
     }
 
-    .year-heading {
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: var(--text);
-      margin: 1rem 0 0.35rem;
-    }
-
-    .year-heading:first-of-type { margin-top: 0; }
-
-    .entry-list { list-style: none; padding: 0; margin: 0 0 0.5rem; }
-
-    .entry-list li {
-      padding: 0.65rem 0;
-      border-bottom: 1px solid var(--border);
+    .page__content p {
       font-size: 1rem;
-      line-height: 1.65;
+      line-height: 1.7;
+      margin: 0 0 0.85rem;
+      color: var(--text-muted);
     }
 
-    .entry-list li:last-child { border-bottom: none; }
+    /* Pottery gallery grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
 
-    .entry-venue {
+    .gallery-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
       display: block;
+    }
+
+    .gallery-item .caption {
+      padding: 0.5rem 0.7rem;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
       font-style: italic;
+    }
+
+    /* Upload hint shown when no images */
+    .gallery-placeholder {
+      grid-column: 1 / -1;
+      border: 2px dashed var(--card-border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
       color: var(--text-subtle);
       font-size: 0.85rem;
-      margin-top: 0.1rem;
     }
 
+    .gallery-placeholder span { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+
+    /* Footer */
     footer {
       background: var(--footer-bg);
       color: var(--footer-text);
@@ -237,6 +274,7 @@
       .author__content { text-align: left; }
       .author__avatar { text-align: left; }
       .masthead { flex-wrap: wrap; padding: 0.5rem 1rem; }
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
     }
 
     @media (max-width: 480px) {
@@ -252,9 +290,9 @@
     <ul class="masthead__menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#publications">Publications</a></li>
-      <li><a href="talks.html" class="active">Talks</a></li>
+      <li><a href="talks.html">Talks</a></li>
       <li><a href="teaching.html">Teaching &amp; Leadership</a></li>
-      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="hobbies.html" class="active">Hobbies</a></li>
       <li><a href="Sambina_Aninta.pdf" target="_blank">CV</a></li>
     </ul>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
@@ -265,6 +303,7 @@
 
 <div class="page__wrapper">
 
+  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="author__avatar">
       <img src="photo.jpg" alt="Sambina Islam Aninta">
@@ -314,59 +353,26 @@
     </div>
   </aside>
 
+  <!-- Main content -->
   <main class="page__content">
 
     <section>
-      <h1>Talks &amp; Posters</h1>
-      <p class="page-subtitle">Conferences, symposia, and workshops</p>
+      <h1>Hobbies</h1>
+      <p class="page-subtitle">Outside the lab</p>
     </section>
 
-    <section id="talks">
-      <h2>Talks</h2>
+    <!-- Pottery -->
+    <section id="pottery">
+      <h2>🏺 Pottery</h2>
+      <p>I love making pottery — here are some pieces from my studio time.</p>
 
-      <div class="year-heading">2026</div>
-      <ul class="entry-list">
-        <li>
-          Aninta SI, Tewhey R, de Boer C. Position-dependent variant effects reveal importance of context in genomic regulation.
-          <span class="entry-venue">Intelligent Systems for Molecular Biology (ISMB). 2026.</span>
-        </li>
-      </ul>
-    </section>
-
-    <section id="posters">
-      <h2>Posters</h2>
-
-      <div class="year-heading">2026</div>
-      <ul class="entry-list">
-        <li>
-          Aninta SI, Tewhey R, de Boer C. Position-dependent variant effects reveal importance of context in genomic regulation.
-          <span class="entry-venue">Cold Spring Harbor Laboratory (CSHL) 90th Symposium: AI in Biology. 2026.</span>
-        </li>
-      </ul>
-
-      <div class="year-heading">2025</div>
-      <ul class="entry-list">
-        <li>
-          Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays.
-          <span class="entry-venue">Biology of Genomes, Cold Spring Harbor Laboratory (CSHL). 2025.</span>
-        </li>
-      </ul>
-
-      <div class="year-heading">2024</div>
-      <ul class="entry-list">
-        <li>
-          Aninta SI, &hellip;, de Boer C. How does data leakage from genomics foundational models inflate downstream model performance?
-          <span class="entry-venue">Biological Data Science, Cold Spring Harbor Laboratory (CSHL). 2024.</span>
-        </li>
-        <li>
-          Aninta SI, &hellip;, de Boer C. How much of transfer learning is actually cheating?
-          <span class="entry-venue">Machine Learning in Computational Biology (MLCB). 2024.</span>
-        </li>
-        <li>
-          Aninta SI, &hellip;, de Boer C. Predicting variant effects using multimodal deep neural networks in autoimmune diseases.
-          <span class="entry-venue">SynBio6.0. 2024.</span>
-        </li>
-      </ul>
+      <div class="gallery">
+        <!-- Add images here like: <div class="gallery-item"><img src="pottery/piece1.jpg" alt="..."><div class="caption">Bowl, 2024</div></div> -->
+        <div class="gallery-placeholder">
+          <span>🏺</span>
+          Photos coming soon — drop images into a <code>pottery/</code> folder and add them here.
+        </div>
+      </div>
     </section>
 
   </main>
