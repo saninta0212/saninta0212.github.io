@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaching &amp; Leadership — Sambina Islam Aninta</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    :root {
+      --bg:           #ffffff;
+      --text:         #494e52;
+      --text-muted:   #6a6a6a;
+      --text-subtle:  #aaaaaa;
+      --link:         #0077b5;
+      --link-hover:   #005a8e;
+      --border:       #f2f3f3;
+      --border-strong:#e5e5e5;
+      --nav-bg:       #494e52;
+      --nav-text:     rgba(255,255,255,0.8);
+      --nav-hover:    #ffffff;
+      --footer-bg:    #494e52;
+      --footer-text:  rgba(255,255,255,0.65);
+      --footer-link:  rgba(255,255,255,0.85);
+      --surface:      #f8f9fa;
+      --btn-bg:       #ffffff;
+      --btn-border:   #d0d0d0;
+      --btn-hover:    #f5f5f5;
+      --avatar-border:#e5e5e5;
+      --sidebar-hover:#f5f8fb;
+      --scroll-track: #f5f5f5;
+      --scroll-thumb: #cccccc;
+    }
+
+    body.dark {
+      --bg:           #1b2232;
+      --text:         #cdd5e0;
+      --text-muted:   #8a9ab0;
+      --text-subtle:  #5d6e84;
+      --link:         #6ab2db;
+      --link-hover:   #8ecae6;
+      --border:       #283248;
+      --border-strong:#2d3e57;
+      --nav-bg:       #10161f;
+      --nav-text:     rgba(205,213,224,0.75);
+      --nav-hover:    #cdd5e0;
+      --footer-bg:    #10161f;
+      --footer-text:  rgba(205,213,224,0.55);
+      --footer-link:  rgba(205,213,224,0.8);
+      --surface:      #212d42;
+      --btn-bg:       #1e2a3e;
+      --btn-border:   #2d3e57;
+      --btn-hover:    #253351;
+      --avatar-border:#2d3e57;
+      --sidebar-hover:#1e2a3e;
+      --scroll-track: #1e2a3e;
+      --scroll-thumb: #364e6e;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--nav-bg);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 56px;
+      gap: 1rem;
+      transition: background 0.25s;
+    }
+
+    .masthead__site-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .masthead__right { display: flex; align-items: center; gap: 0; }
+
+    .masthead__menu { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+
+    .masthead__menu li a {
+      display: block;
+      padding: 0.75rem 0.85rem;
+      color: var(--nav-text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .masthead__menu li a:hover, .masthead__menu li a.active { color: var(--nav-hover); text-decoration: none; }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--nav-text);
+      font-size: 1rem;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+
+    .theme-toggle:hover { color: var(--nav-hover); }
+
+    .page__wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .sidebar { position: sticky; top: 76px; }
+
+    .author__avatar { display: block; text-align: center; margin-bottom: 1.1rem; }
+
+    .author__avatar img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--avatar-border);
+      transition: border-color 0.25s;
+    }
+
+    .author__content { text-align: center; margin-bottom: 1rem; }
+
+    .author__name { margin: 0 0 0.2rem; font-size: 1.15rem; font-weight: 700; color: var(--text); }
+    .author__pronouns { font-size: 0.8rem; color: var(--text-subtle); margin: 0 0 0.55rem; }
+    .author__bio { font-size: 0.84rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+
+    .author__urls-wrapper { margin-top: 1.1rem; }
+    .author__urls { list-style: none; padding: 0; margin: 0; }
+    .author__urls li { margin-bottom: 0.3rem; }
+
+    .author__urls li a {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.84rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.25rem 0.4rem;
+      border-radius: 4px;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .author__urls li a:hover { color: var(--link); background: var(--sidebar-hover); text-decoration: none; }
+
+    .author__urls li a i {
+      width: 18px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-subtle);
+      flex-shrink: 0;
+      transition: color 0.18s;
+    }
+
+    .author__urls li a:hover i { color: var(--link); }
+
+    .page__content section { margin-bottom: 2.5rem; }
+
+    .page__content h1 { font-size: 1.7rem; margin: 0 0 0.35rem; color: var(--text); }
+
+    .page-subtitle { font-size: 1rem; color: var(--text-subtle); margin: 0 0 1.5rem; font-weight: 400; }
+
+    .page__content h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .page__content p { font-size: 0.9375rem; line-height: 1.65; margin: 0 0 0.85rem; }
+
+    .role-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+
+    .role-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      gap: 1rem;
+    }
+
+    .role-list li:last-child { border-bottom: none; }
+    .role-date { color: var(--text-subtle); font-size: 0.82rem; white-space: nowrap; flex-shrink: 0; }
+
+    .section-sub { font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 1.4rem 0 0.5rem; }
+
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 1.3rem 1rem;
+      font-size: 0.82rem;
+      margin-top: 2rem;
+      transition: background 0.25s;
+    }
+
+    footer a { color: var(--footer-link); }
+    footer a:hover { color: #fff; text-decoration: underline; }
+
+    @media (max-width: 780px) {
+      .page__wrapper { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
+      .sidebar { position: static; }
+      .author__content { text-align: left; }
+      .author__avatar { text-align: left; }
+      .masthead { flex-wrap: wrap; padding: 0.5rem 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .masthead__menu li a { padding: 0.5rem 0.5rem; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="index.html" class="masthead__site-name">Sambina Islam Aninta</a>
+  <div class="masthead__right">
+    <ul class="masthead__menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#publications">Publications</a></li>
+      <li><a href="index.html#talks">Talks</a></li>
+      <li><a href="teaching.html" class="active">Teaching &amp; Leadership</a></li>
+      <li><a href="Sambina_Aninta.pdf" target="_blank">CV</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle dark/light mode">
+      <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+  </div>
+</header>
+
+<div class="page__wrapper">
+
+  <aside class="sidebar">
+    <div class="author__avatar">
+      <img src="photo.jpg" alt="Sambina Islam Aninta">
+    </div>
+    <div class="author__content">
+      <h3 class="author__name">Sambina Islam Aninta</h3>
+      <p class="author__pronouns">she/her</p>
+      <p class="author__bio">
+        PhD Student · School of Biomedical Engineering<br>
+        University of British Columbia<br>
+        Vancouver, BC
+      </p>
+    </div>
+    <div class="author__urls-wrapper">
+      <ul class="author__urls">
+        <li>
+          <a href="mailto:sambina.aninta@ubc.ca">
+            <i class="fas fa-envelope"></i> sambina.aninta@ubc.ca
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?user=z4xzIXUAAAAJ&hl=en" target="_blank" rel="noopener">
+            <i class="fas fa-graduation-cap"></i> Google Scholar
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/saninta0212" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/sambina-islam-aninta-7b3004186/" target="_blank" rel="noopener">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://orcid.org/0009-0009-6372-2143" target="_blank" rel="noopener">
+            <i class="fab fa-orcid"></i> ORCID
+          </a>
+        </li>
+        <li>
+          <a href="https://bsky.app/profile/sambean12.bsky.social" target="_blank" rel="noopener">
+            <i class="fab fa-bluesky"></i> Bluesky
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="page__content">
+
+    <section>
+      <h1>Teaching &amp; Leadership</h1>
+      <p class="page-subtitle">University of British Columbia · Vancouver, BC</p>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching &amp; Mentoring</h2>
+      <ul class="role-list">
+        <li><span>UBC Academic Essentials AI Coordinator</span><span class="role-date">2026</span></li>
+        <li><span>Teaching Assistant &mdash; Applied Machine Learning (CPSC 330), UBC</span><span class="role-date">2023</span></li>
+        <li><span>AMS Tutoring Supervisor, UBC</span><span class="role-date">2018&ndash;2023</span></li>
+      </ul>
+    </section>
+
+    <section id="leadership">
+      <h2>Leadership</h2>
+      <ul class="role-list">
+        <li><span>BC Director of Communications &mdash; Nucleate Canada</span><span class="role-date">2024&ndash;2025</span></li>
+        <li><span>President, UBC STEM Fellowship</span><span class="role-date">2021&ndash;2023</span></li>
+      </ul>
+    </section>
+
+    <section id="reviewing">
+      <h2>Reviewing</h2>
+      <ul class="role-list">
+        <li><span>Nature, PLOS Computational Biology, Cell Genomics, ISMB</span><span class="role-date">2025&ndash;Present</span></li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>&copy; 2026 Sambina Islam Aninta &mdash; <a href="Sambina_Aninta.pdf" target="_blank">CV</a></p>
+</footer>
+
+<script>
+  const btn  = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-icon');
+
+  function applyTheme(dark) {
+    if (dark) {
+      document.body.classList.add('dark');
+      icon.className = 'fas fa-sun';
+    } else {
+      document.body.classList.remove('dark');
+      icon.className = 'fas fa-moon';
+    }
+  }
+
+  const saved = localStorage.getItem('theme');
+  applyTheme(saved === 'dark');
+
+  btn.addEventListener('click', function () {
+    const isDark = document.body.classList.toggle('dark');
+    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
+
+</body>
+</html>
