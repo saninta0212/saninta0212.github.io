@@ -1,762 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sambina Islam Aninta</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root {
-      --bg-dark: #0d1b2a;
-      --bg-card: #101f30;
-      --text-main: #e0e6ed;
-      --text-accent: #a8dadc;
-      --text-muted: #627a8f;
-      --link-hover: #f4a261;
-      --border: rgba(168, 218, 220, 0.1);
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: 'Raleway', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.75;
+      font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: #494e52;
+      background: #fff;
+      line-height: 1.5;
     }
 
-    /* ── Sticky nav ── */
-    nav {
+    a { color: #0077b5; text-decoration: none; }
+    a:hover { color: #005a8e; text-decoration: underline; }
+
+    /* === Masthead === */
+    .masthead {
       position: sticky;
       top: 0;
       z-index: 200;
-      background: rgba(13, 27, 42, 0.96);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+      background: #494e52;
+      padding: 0 1.5rem;
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 0.2rem 1.8rem;
-      padding: 0.7rem 1rem;
+      justify-content: space-between;
+      min-height: 56px;
+      gap: 1rem;
     }
 
-    nav a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      padding-bottom: 2px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    nav a:hover, nav a.active {
-      color: var(--text-accent);
-      border-bottom-color: var(--text-accent);
-    }
-
-    /* ── Header ── */
-    header {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(155deg, #0a1622 0%, #0d1b2a 40%, #162236 80%, #1a2e47 100%);
-      padding: 5.5rem 2rem 5rem;
-    }
-
-    /* Static DNA canvas background */
-    #dna-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* DNA base sequence ticker */
-    .seq-ticker {
-      position: absolute;
-      bottom: 6px;
-      left: 0;
-      right: 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.58rem;
-      color: rgba(168, 218, 220, 0.1);
-      letter-spacing: 0.18em;
-      overflow: hidden;
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-      padding: 0 2rem;
-      z-index: 1;
-    }
-
-    .header-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      margin: 0 0 0.35rem;
-      font-size: 2.7rem;
-      font-weight: 700;
-      color: #f1faee;
-      letter-spacing: -0.025em;
-    }
-
-    .subtitle {
-      margin: 0 0 1.5rem;
+    .masthead__site-name {
       font-size: 1rem;
-      color: var(--text-accent);
-      font-weight: 400;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
-    /* ── Icon contact row ── */
-    .contact-icons {
+    .masthead__menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: flex;
-      align-items: center;
-      gap: 0.9rem;
       flex-wrap: wrap;
     }
 
-    .icon-link {
+    .masthead__menu li a {
+      display: block;
+      padding: 0.75rem 0.85rem;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .masthead__menu li a:hover { color: #fff; text-decoration: none; }
+
+    /* === Page layout === */
+    .page__wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* === Sidebar === */
+    .sidebar { position: sticky; top: 76px; }
+
+    .author__avatar {
+      display: block;
+      text-align: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .author__avatar img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #e5e5e5;
+    }
+
+    .avatar-placeholder {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: #eaf2fb;
       display: inline-flex;
       align-items: center;
-      gap: 0.38rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s, transform 0.2s;
-      position: relative;
-    }
-
-    .icon-link svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-    }
-
-    .icon-link:hover {
-      color: var(--link-hover);
-      transform: translateY(-1px);
-    }
-
-    .icon-link .icon-label {
-      font-size: 0.78rem;
+      justify-content: center;
+      font-size: 2.8rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      color: #1a73e8;
+      border: 2px solid #d0dff0;
     }
 
-    .icon-link[data-tip]:hover::after {
-      content: attr(data-tip);
-      position: absolute;
-      bottom: calc(100% + 6px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(10, 22, 35, 0.95);
-      color: var(--text-accent);
-      font-size: 0.7rem;
-      font-family: 'JetBrains Mono', monospace;
-      white-space: nowrap;
-      padding: 3px 8px;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      pointer-events: none;
-      z-index: 100;
-    }
+    .author__content { text-align: center; margin-bottom: 1rem; }
 
-    /* ── Main ── */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
-    }
-
-    section {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.9rem 2.2rem;
-    }
-
-    section h2 {
-      margin: 0 0 1.3rem;
-      font-size: 0.76rem;
+    .author__name {
+      margin: 0 0 0.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-accent);
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
+      color: #494e52;
     }
 
-    section h2 .h2-tulip { display: inline-block; opacity: 0.75; font-size: 0.9rem; }
-
-    section h2::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+    .author__pronouns {
+      font-size: 0.8rem;
+      color: #999;
+      margin: 0 0 0.55rem;
     }
 
-    ul {
-      padding-left: 1.2rem;
-      margin: 0.35rem 0 0;
+    .author__bio {
+      font-size: 0.84rem;
+      color: #6a6a6a;
+      line-height: 1.55;
+      margin: 0;
     }
 
-    li {
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-      color: var(--text-main);
-    }
+    .author__urls-wrapper { margin-top: 1.1rem; }
 
-    a { color: var(--text-accent); text-decoration: none; }
-    a:hover { color: var(--link-hover); }
-
-    /* Preview list */
-    .preview-list {
+    .author__urls {
       list-style: none;
       padding: 0;
       margin: 0;
     }
 
-    .preview-list li {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
+    .author__urls li { margin-bottom: 0.3rem; }
+
+    .author__urls li a {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.84rem;
+      color: #494e52;
+      text-decoration: none;
+      padding: 0.25rem 0.4rem;
+      border-radius: 4px;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .author__urls li a:hover {
+      color: #0077b5;
+      background: #f5f8fb;
+      text-decoration: none;
+    }
+
+    .author__urls li a i {
+      width: 18px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+      flex-shrink: 0;
+      transition: color 0.18s;
+    }
+
+    .author__urls li a:hover i { color: #0077b5; }
+
+    /* === Main content === */
+    .page__content section { margin-bottom: 2.5rem; }
+
+    .page__content h1 {
+      font-size: 1.7rem;
+      margin: 0 0 0.35rem;
+      color: #494e52;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      color: #999;
+      margin: 0 0 1.2rem;
+      font-weight: 400;
+    }
+
+    .page__content h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #494e52;
+      margin: 0 0 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid #f2f3f3;
+    }
+
+    .page__content p {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      margin: 0 0 0.85rem;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 1.1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.42rem 0.95rem;
+      border-radius: 4px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid #d0d0d0;
+      color: #494e52;
+      background: #fff;
+      transition: background 0.18s, border-color 0.18s;
+    }
+
+    .btn:hover {
+      background: #f5f5f5;
+      color: #494e52;
+      text-decoration: none;
+      border-color: #bbb;
+    }
+
+    .btn i { font-size: 0.82rem; }
+
+    /* News */
+    .news-list { list-style: none; padding: 0; margin: 0; }
+
+    .news-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid #f2f3f3;
       font-size: 0.9rem;
       line-height: 1.55;
     }
 
-    .preview-list li:first-child { padding-top: 0; }
-    .preview-list li:last-child { border-bottom: none; padding-bottom: 0; }
-
-    /* View all link */
-    .view-all {
-      text-align: right;
-      margin-top: 1.1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .view-all a {
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-
-    .view-all a:hover { color: var(--link-hover); }
-
-    /* Awards preview table */
-    .awards-preview {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.89rem;
-    }
-
-    .awards-preview td {
-      padding: 0.7rem 0.5rem;
-      vertical-align: top;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .awards-preview tr:last-child td { border-bottom: none; }
-
-    .awards-preview td:last-child {
-      text-align: right;
-      white-space: nowrap;
-      color: var(--text-accent);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.74rem;
-      padding-left: 1rem;
-    }
-
-    .award-desc {
-      font-style: italic;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      margin-top: 0.15rem;
-    }
-
-    /* ── News ── */
-    .news-list { display: flex; flex-direction: column; }
-
-    .news-item {
-      display: flex;
-      gap: 1.4rem;
-      align-items: flex-start;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .news-item:first-child { padding-top: 0; }
+    .news-item:last-child { border-bottom: none; }
 
     .news-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text-accent);
+      color: #aaa;
+      font-size: 0.8rem;
       white-space: nowrap;
-      min-width: 72px;
-      padding-top: 0.18rem;
-    }
-
-    .news-content { font-size: 0.9rem; line-height: 1.6; }
-
-    .news-tag {
-      display: inline-block;
-      font-size: 0.67rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      padding: 1px 7px;
-      border-radius: 20px;
-      margin-right: 0.4rem;
-      vertical-align: middle;
-      border: 1px solid;
-    }
-
-    .tag-paper  { color: #a8dadc; border-color: rgba(168,218,220,0.4); background: rgba(168,218,220,0.07); }
-    .tag-talk   { color: #f4a261; border-color: rgba(244,162, 97,0.4); background: rgba(244,162, 97,0.07); }
-    .tag-award  { color: #c4b5fd; border-color: rgba(196,181,253,0.4); background: rgba(196,181,253,0.07); }
-    .tag-misc   { color: #94a3b8; border-color: rgba(148,163,184,0.4); background: rgba(148,163,184,0.07); }
-
-    /* ── Hobbies ── */
-    .hobbies-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-
-    .hobby-card {
-      flex: 1;
-      min-width: 130px;
-      background: rgba(168, 218, 220, 0.03);
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      padding: 1.3rem 0.9rem;
-      text-align: center;
-      transition: border-color 0.25s, transform 0.25s, background 0.25s;
-      cursor: default;
-    }
-
-    .hobby-card:hover {
-      border-color: rgba(168, 218, 220, 0.3);
-      background: rgba(168, 218, 220, 0.06);
-      transform: translateY(-3px);
-    }
-
-    .hobby-glyph { display: block; font-size: 1.9rem; line-height: 1; margin-bottom: 0.6rem; }
-    .hobby-name { font-size: 0.87rem; font-weight: 700; color: #ecf2f8; margin-bottom: 0.2rem; }
-    .hobby-note { font-size: 0.76rem; color: var(--text-muted); font-style: italic; }
-
-    /* ── CV Modal ── */
-    .cv-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.88);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .cv-modal.open { display: flex; }
-
-    .cv-modal-inner {
-      position: relative;
-      width: 92%;
-      max-width: 860px;
-      height: 92vh;
-      background: #1a2e47;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cv-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.1rem;
-      border-bottom: 1px solid var(--border);
+      min-width: 75px;
+      padding-top: 0.12rem;
       flex-shrink: 0;
     }
 
-    .cv-modal-title {
+    /* Publications */
+    .pub-group { margin-bottom: 1.5rem; }
+
+    .pub-group-label {
       font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-accent);
+      letter-spacing: 0.06em;
+      color: #aaa;
+      margin: 0 0 0.55rem;
     }
 
-    .cv-modal-actions { display: flex; align-items: center; gap: 0.6rem; }
+    .pub-list { list-style: none; padding: 0; margin: 0; }
 
-    .cv-download {
-      font-size: 0.75rem;
+    .pub-list li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #f2f3f3;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .pub-list li:last-child { border-bottom: none; }
+
+    .pub-title {
       font-weight: 600;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 3px 10px;
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      transition: color 0.2s, border-color 0.2s;
-      letter-spacing: 0.04em;
+      color: #0077b5;
+      display: block;
+      margin-bottom: 0.15rem;
     }
 
-    .cv-download:hover { color: var(--text-accent); border-color: var(--text-accent); }
+    .pub-title:hover { text-decoration: underline; }
+    .pub-authors { color: #6a6a6a; }
+    .pub-venue { font-style: italic; color: #999; }
 
-    .cv-close {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-muted);
-      font-size: 1.4rem;
-      line-height: 1;
-      padding: 2px 4px;
-      transition: color 0.2s;
+    /* Talks */
+    .talk-type-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #aaa;
+      margin: 1.2rem 0 0.3rem;
+    }
+
+    .talk-type-label:first-child { margin-top: 0; }
+
+    .talk-year {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #494e52;
+      margin: 0.8rem 0 0.35rem;
+    }
+
+    .talk-list { list-style: disc; padding-left: 1.4rem; margin: 0; }
+
+    .talk-list li {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin-bottom: 0.45rem;
+    }
+
+    /* Awards */
+    .awards-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+
+    .awards-table th {
+      text-align: left;
+      padding: 0.45rem 0.75rem;
+      background: #f8f9fa;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #aaa;
+      border-bottom: 2px solid #e5e5e5;
+    }
+
+    .awards-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f2f3f3;
+      vertical-align: top;
+    }
+
+    .awards-table tr:last-child td { border-bottom: none; }
+
+    .awards-table td:nth-child(2),
+    .awards-table td:nth-child(3) {
+      white-space: nowrap;
+      color: #888;
+      font-size: 0.85rem;
+    }
+
+    /* Role lists (Teaching / Leadership / Reviewing) */
+    .role-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+
+    .role-list li {
       display: flex;
-      align-items: center;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid #f2f3f3;
+      font-size: 0.9rem;
+      gap: 1rem;
     }
 
-    .cv-close:hover { color: var(--link-hover); }
-    .cv-modal-inner iframe { flex: 1; width: 100%; border: none; display: block; }
+    .role-list li:last-child { border-bottom: none; }
+    .role-date { color: #aaa; font-size: 0.82rem; white-space: nowrap; flex-shrink: 0; }
+
+    .section-sub {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #494e52;
+      margin: 1.4rem 0 0.5rem;
+    }
 
     /* Footer */
     footer {
+      background: #494e52;
+      color: rgba(255,255,255,0.65);
       text-align: center;
-      padding: 1.4rem 1rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
+      padding: 1.3rem 1rem;
+      font-size: 0.82rem;
+      margin-top: 2rem;
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 620px) {
-      h1 { font-size: 2rem; }
-      section { padding: 1.4rem 1.1rem; }
-      nav { gap: 0.3rem 0.9rem; }
-      .news-item { flex-direction: column; gap: 0.25rem; }
-      .news-date { min-width: unset; }
+    footer a { color: rgba(255,255,255,0.85); }
+    footer a:hover { color: #fff; text-decoration: underline; }
+
+    /* Responsive */
+    @media (max-width: 780px) {
+      .page__wrapper {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1rem;
+      }
+      .sidebar { position: static; }
+      .author__content { text-align: left; }
+      .author__avatar { text-align: left; }
+      .masthead { flex-wrap: wrap; padding: 0.5rem 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .masthead__menu li a { padding: 0.5rem 0.5rem; font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ──────────────── Navigation ──────────────── -->
-<nav>
-  <a href="#about">About</a>
-  <a href="#news">News</a>
-  <a href="#publications">Publications</a>
-  <a href="#talks">Talks</a>
-  <a href="#awards">Awards</a>
-  <a href="#hobbies">Hobbies</a>
-</nav>
-
-<!-- ──────────────── Header ──────────────── -->
-<header>
-  <!-- Static DNA double helix background -->
-  <canvas id="dna-bg"></canvas>
-
-  <!-- DNA base sequence ticker -->
-  <div class="seq-ticker">ATCGATCGGCTATGCAAGTCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCAATCGATCGGCTATGCA</div>
-
-  <div class="header-inner">
-    <h1>Sambina Islam Aninta</h1>
-    <p class="subtitle">PhD Student &bull; Computational Genomics</p>
-
-    <div class="contact-icons">
-
-      <!-- Email -->
-      <a href="mailto:sambina.aninta@ubc.ca" class="icon-link" data-tip="sambina.aninta@ubc.ca">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="2"/>
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-        </svg>
-      </a>
-
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/sambina-islam-aninta-7b3004186/" class="icon-link" target="_blank" rel="noopener" data-tip="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/>
-          <circle cx="4" cy="4" r="2"/>
-        </svg>
-      </a>
-
-      <!-- Google Scholar -->
-      <a href="https://scholar.google.com/citations?user=z4xzIXUAAAAJ&hl=en" class="icon-link" target="_blank" rel="noopener" data-tip="Google Scholar">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2 2 8.5l3.5 2V18l6.5 3.5L18.5 18v-7.5L22 8.5 12 2z" opacity="0.85"/>
-          <path d="M12 2 2 8.5l10 5.8 10-5.8L12 2z" opacity="0.5"/>
-        </svg>
-      </a>
-
-      <!-- GitHub -->
-      <a href="https://github.com/saninta0212" class="icon-link" target="_blank" rel="noopener" data-tip="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
-      </a>
-
-      <!-- CV -->
-      <a href="#" class="icon-link" id="cv-btn" data-tip="View CV">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10 9 9 9 8 9"/>
-        </svg>
-        <span class="icon-label">CV</span>
-      </a>
-
-    </div>
-  </div>
+<!-- Masthead -->
+<header class="masthead">
+  <a href="#about" class="masthead__site-name">Sambina Islam Aninta</a>
+  <ul class="masthead__menu">
+    <li><a href="#about">Home</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#talks">Talks</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="Sambina_Aninta.pdf" target="_blank">CV</a></li>
+  </ul>
 </header>
 
-<!-- ──────────────── CV Modal ──────────────── -->
-<div id="cv-modal" class="cv-modal" role="dialog" aria-modal="true" aria-label="CV">
-  <div class="cv-modal-inner">
-    <div class="cv-modal-header">
-      <span class="cv-modal-title">Sambina Islam Aninta &mdash; CV</span>
-      <div class="cv-modal-actions">
-        <a href="Sambina_Aninta.pdf" download class="cv-download">Download PDF</a>
-        <button class="cv-close" id="cv-close" aria-label="Close">&times;</button>
-      </div>
+<!-- Page body -->
+<div class="page__wrapper">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="author__avatar">
+      <img src="photo.jpg" alt="Sambina Islam Aninta">
     </div>
-    <iframe src="Sambina_Aninta.pdf" title="CV PDF"></iframe>
-  </div>
+    <div class="author__content">
+      <h3 class="author__name">Sambina Islam Aninta</h3>
+      <p class="author__pronouns">she/her</p>
+      <p class="author__bio">
+        PhD Student · School of Biomedical Engineering<br>
+        University of British Columbia<br>
+        Vancouver, BC
+      </p>
+    </div>
+    <div class="author__urls-wrapper">
+      <ul class="author__urls">
+        <li>
+          <a href="mailto:sambina.aninta@ubc.ca">
+            <i class="fas fa-envelope"></i> sambina.aninta@ubc.ca
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?user=z4xzIXUAAAAJ&hl=en" target="_blank" rel="noopener">
+            <i class="fas fa-graduation-cap"></i> Google Scholar
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/saninta0212" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/sambina-islam-aninta-7b3004186/" target="_blank" rel="noopener">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="page__content">
+
+    <!-- About / Bio -->
+    <section id="about">
+      <h1>Sambina Islam Aninta</h1>
+      <p class="page-subtitle">Computational Biologist | PhD Student, University of British Columbia, Vancouver</p>
+
+      <p>
+        I am a PhD student in Biomedical Engineering at the University of British Columbia, advised by
+        <a href="https://de-boer-lab.github.io/" target="_blank" rel="noopener">Dr. Carl de Boer</a>.
+        My research focuses on understanding how deep learning models learn to predict functional consequences
+        of genetic variants. My core work spans developing deep learning models for various functional
+        genomics assays, constructing benchmarking frameworks for post-hoc interpretability methods, and
+        developing generative models to study chromatin accessibility and DNA methylation.
+      </p>
+      <p>
+        My supervisory committee includes Dr. Peter Koo, Dr. Ali Bashashati, Dr. Xin Tang, and Dr. Sheila Teves.
+      </p>
+
+      <div class="btn-row">
+        <a href="Sambina_Aninta.pdf" class="btn" target="_blank"><i class="fas fa-file-alt"></i> CV</a>
+        <a href="https://scholar.google.com/citations?user=z4xzIXUAAAAJ&hl=en" class="btn" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+        <a href="https://github.com/saninta0212" class="btn" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news-list">
+        <li class="news-item">
+          <span class="news-date">2026</span>
+          <span>New preprint: <strong>Position-dependent variant effects reveal importance of context in genomic regulation.</strong> <em>bioRxiv.</em></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2026</span>
+          <span>Talk at <strong>Intelligent Systems for Molecular Biology (ISMB)</strong> — Position-dependent variant effects reveal importance of context in genomic regulation.</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2026</span>
+          <span>Poster at <strong>CSHL 90th Symposium AI in Biology</strong> — Position-dependent variant effects reveal importance of context in genomic regulation.</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2026</span>
+          <span>Awarded the <strong>UBC Four Year Doctoral Fellowship (4YF)</strong> ($72,000), <strong>SBME Travel Award</strong> ($1,500), and <strong>ISMB Travel Fellowship</strong> ($1,047).</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2025</span>
+          <span>Started PhD in Biomedical Engineering at UBC, joining the de Boer Lab.</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2025</span>
+          <span>Poster at <strong>Biology of Genomes, CSHL</strong> — Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays.</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2025</span>
+          <span>Awarded the <strong>President's Academic Excellence Initiative PhD Award</strong> ($1,000) and <strong>BIPOC Graduate Excellence Award</strong> ($1,500).</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2024</span>
+          <span>Poster at <strong>Biological Data Science, CSHL</strong> — How does data leakage from genomics foundational models inflate downstream model performance?</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2024</span>
+          <span>Poster at <strong>MLCB 2024</strong> — How much of transfer learning is actually cheating?</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">2024</span>
+          <span>Poster at <strong>SynBio6.0</strong> — Predicting variant effects using multimodal deep neural networks in autoimmune diseases.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <h2>Selected Publications</h2>
+
+      <div class="pub-group">
+        <p class="pub-group-label">Genomics &times; AI</p>
+        <ul class="pub-list">
+          <li>
+            <span class="pub-title">Position-dependent variant effects reveal importance of context in genomic regulation</span>
+            <span class="pub-authors">Aninta SI, &hellip;, de Boer C. </span>
+            <span class="pub-venue">bioRxiv. 2026.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-group">
+        <p class="pub-group-label">Antimicrobial Peptides</p>
+        <ul class="pub-list">
+          <li>
+            <span class="pub-title">Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides</span>
+            <span class="pub-authors">Li C, Sutherland D, Salehi A, Lin D, Aninta SI, et al. </span>
+            <span class="pub-venue">Protein Science. 2025.</span>
+          </li>
+          <li>
+            <span class="pub-title">Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage</span>
+            <span class="pub-authors">Lin D, Sutherland D, Aninta SI, et al. </span>
+            <span class="pub-venue">Antibiotics (Basel). 2022.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Talks & Posters -->
+    <section id="talks">
+      <h2>Talks &amp; Posters</h2>
+
+      <p class="talk-type-label">Talks</p>
+      <div class="talk-year">2026</div>
+      <ul class="talk-list">
+        <li>Aninta SI, &hellip;, de Boer C. Position-dependent variant effects reveal importance of context in genomic regulation. <em>Intelligent Systems for Molecular Biology (ISMB).</em></li>
+      </ul>
+
+      <p class="talk-type-label">Posters</p>
+      <div class="talk-year">2026</div>
+      <ul class="talk-list">
+        <li>Aninta SI, &hellip;, de Boer C. Position-dependent variant effects reveal importance of context in genomic regulation. <em>Cold Spring Harbor Laboratory (CSHL) 90th Symposium AI in Biology.</em></li>
+      </ul>
+      <div class="talk-year">2025</div>
+      <ul class="talk-list">
+        <li>Aninta SI, &hellip;, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>Biology of Genomes, Cold Spring Harbor Laboratory (CSHL).</em></li>
+      </ul>
+      <div class="talk-year">2024</div>
+      <ul class="talk-list">
+        <li>Aninta SI, &hellip;, de Boer C. How does data leakage from genomics foundational models inflate downstream model performance? <em>Biological Data Science, Cold Spring Harbor Laboratory (CSHL).</em></li>
+        <li>Aninta SI, &hellip;, de Boer C. How much of transfer learning is actually cheating? <em>MLCB.</em></li>
+        <li>Aninta SI, &hellip;, de Boer C. Predicting variant effects using multimodal deep neural networks in autoimmune diseases. <em>SynBio6.0.</em></li>
+      </ul>
+    </section>
+
+    <!-- Awards -->
+    <section id="awards">
+      <h2>Awards &amp; Scholarships</h2>
+      <table class="awards-table">
+        <thead>
+          <tr>
+            <th>Award</th>
+            <th>Dates</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>SBME Travel Award</td><td>2026</td><td>$1,500</td></tr>
+          <tr><td>ISMB Travel Fellowship</td><td>2026</td><td>$1,047</td></tr>
+          <tr><td>BIPOC Graduate Excellence Award</td><td>2025&ndash;2026</td><td>$1,500</td></tr>
+          <tr><td>UBC Four Year Doctoral Fellowship (4YF)</td><td>2026&ndash;2030</td><td>$72,000</td></tr>
+          <tr><td>President&rsquo;s Academic Excellence Initiative PhD Award</td><td>2025&ndash;2026</td><td>$1,000</td></tr>
+          <tr><td>KM International Leader of Tomorrow (KMILOT) Award</td><td>2018&ndash;2023</td><td>$250,000</td></tr>
+          <tr><td>UBC Trek Excellence Scholarship</td><td>2019&ndash;2020; 2022&ndash;2023</td><td>$6,000</td></tr>
+          <tr><td>UBC Science Scholar</td><td>2018&ndash;2019, 2021&ndash;2023</td><td>&mdash;</td></tr>
+          <tr><td>UBC Dean&rsquo;s Honour List</td><td>2018&ndash;2023</td><td>&mdash;</td></tr>
+          <tr><td>UBC J Fred Muir Memorial Scholarship in Science</td><td>2019&ndash;2020</td><td>$350</td></tr>
+          <tr><td>UBC Clayton Person Memorial Scholarship in Biology</td><td>2021&ndash;2022</td><td>$750</td></tr>
+          <tr><td>UBC Charles and Jane Banks Scholarship</td><td>2022&ndash;2023</td><td>$270</td></tr>
+          <tr><td>UBC Faculty of Science International Student Scholarship</td><td>2021&ndash;2023</td><td>$7,700</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Teaching, Leadership, Reviewing -->
+    <section id="teaching">
+      <h2>Teaching &amp; Mentoring</h2>
+      <ul class="role-list">
+        <li><span>UBC Academic Essentials AI Coordinator</span><span class="role-date">2026</span></li>
+        <li><span>Teaching Assistant &mdash; Applied Machine Learning (CPSC 330), UBC</span><span class="role-date">2023</span></li>
+        <li><span>AMS Tutoring Supervisor, UBC</span><span class="role-date">2018&ndash;2023</span></li>
+      </ul>
+
+      <p class="section-sub">Leadership</p>
+      <ul class="role-list">
+        <li><span>BC Director of Communications &mdash; Nucleate Canada</span><span class="role-date">2024&ndash;2025</span></li>
+        <li><span>President, UBC STEM Fellowship</span><span class="role-date">2021&ndash;2023</span></li>
+      </ul>
+
+      <p class="section-sub">Reviewing</p>
+      <ul class="role-list">
+        <li><span>Nature, PLOS Computational Biology, Cell Genomics, ISMB</span><span class="role-date">2025&ndash;Present</span></li>
+      </ul>
+    </section>
+
+  </main>
 </div>
 
-<!-- ──────────────── Main Content ──────────────── -->
-<main>
-
-  <section id="about">
-    <h2><span class="h2-tulip">❀</span> About</h2>
-    <p>
-      I'm a PhD student in Biomedical Engineering at the University of British Columbia, working in the
-      <a href="https://de-boer-lab.github.io/" target="_blank">de Boer Lab</a>. My research focuses on
-      applying machine learning and deep learning to regulatory genomics &mdash; studying how genetic variants
-      affect chromatin accessibility and gene expression, with applications in autoimmune disease.
-    </p>
-  </section>
-
-  <!-- ── News ── -->
-  <section id="news">
-    <h2><span class="h2-tulip">❀</span> News</h2>
-    <div class="news-list">
-
-      <div class="news-item">
-        <div class="news-date">Feb 2026</div>
-        <div class="news-content">
-          <span class="news-tag tag-misc">New</span>
-          Started my PhD in Biomedical Engineering at UBC, joining the de Boer Lab.
-        </div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-date">May 2025</div>
-        <div class="news-content">
-          <span class="news-tag tag-talk">Talk</span>
-          Presented poster at <em>Biology of Genomes, CSHL</em> &mdash; Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays.
-        </div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-date">Nov 2024</div>
-        <div class="news-content">
-          <span class="news-tag tag-talk">Talk</span>
-          Presented at <em>MLCB 2024</em> and <em>Biological Data Science, CSHL</em> on data leakage in genomic foundation models.
-        </div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-date">2025</div>
-        <div class="news-content">
-          <span class="news-tag tag-award">Award</span>
-          Received the President&rsquo;s Academic Excellence Initiative PhD Award.
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── Publications preview ── -->
-  <section id="publications">
-    <h2><span class="h2-tulip">❀</span> Publications</h2>
-    <ul class="preview-list">
-      <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in Massively Parallel Reporter Assays. <em>(in prep.)</em></li>
-      <li>Li C, Sutherland D, Salehi A, Lin D, Aninta SI, et al. Mining the UniProtKB/Swiss-Prot database for antimicrobial peptides. <em>Protein Science.</em> 2025.</li>
-      <li>Lin D, Sutherland D, Aninta SI, et al. Mining Amphibian and Insect Transcriptomes for Antimicrobial Peptide Sequences with rAMPage. <em>Antibiotics (Basel).</em> 2022.</li>
-    </ul>
-    <div class="view-all"><a href="publications.html">View full list &amp; reviews &rarr;</a></div>
-  </section>
-
-  <!-- ── Talks preview ── -->
-  <section id="talks">
-    <h2><span class="h2-tulip">❀</span> Talks &amp; Posters</h2>
-    <ul class="preview-list">
-      <li>Aninta SI, Tewhey R, de Boer C. Variant Position Modulates Functional Impact in MPRAs. <em>Biology of Genomes, CSHL;</em> 2025.</li>
-      <li>Aninta SI, Rafi AM, de Boer C. How does data leakage from genomics foundational models inflate downstream model performance? <em>Biological Data Science, CSHL;</em> 2024.</li>
-      <li>Aninta SI, Rafi AM, de Boer C. How much of transfer learning is actually cheating? <em>MLCB;</em> 2024.</li>
-    </ul>
-    <div class="view-all"><a href="talks.html">View all talks &rarr;</a></div>
-  </section>
-
-  <!-- ── Awards preview ── -->
-  <section id="awards">
-    <h2><span class="h2-tulip">❀</span> Awards &amp; Scholarships</h2>
-    <table class="awards-preview">
-      <tbody>
-        <tr>
-          <td>President&rsquo;s Academic Excellence Initiative PhD Award</td>
-          <td>2025&ndash;2026</td>
-        </tr>
-        <tr>
-          <td>
-            KM International Leader of Tomorrow (KMILOT) Award
-            <div class="award-desc">Full-ride scholarship (~250k CAD) for outstanding leadership</div>
-          </td>
-          <td>2018&ndash;2023</td>
-        </tr>
-        <tr>
-          <td>
-            UBC Trek Excellence Scholarship
-            <div class="award-desc">Top 5% of Faculty, Year and School (6,000 CAD)</div>
-          </td>
-          <td>2019&ndash;2020, 2022&ndash;2023</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="view-all"><a href="awards.html">View all awards &rarr;</a></div>
-  </section>
-
-  <!-- ── Hobbies ── -->
-  <section id="hobbies">
-    <h2><span class="h2-tulip">❀</span> Hobbies &amp; Interests</h2>
-    <div class="hobbies-grid">
-      <div class="hobby-card">
-        <span class="hobby-glyph">🏺</span>
-        <div class="hobby-name">Pottery</div>
-      </div>
-      <div class="hobby-card">
-        <span class="hobby-glyph">🏃</span>
-        <div class="hobby-name">Running</div>
-      </div>
-      <div class="hobby-card">
-        <span class="hobby-glyph">💃</span>
-        <div class="hobby-name">Salsa</div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
 <footer>
-  &copy; 2026 Sambina Islam Aninta
+  <p>&copy; 2026 Sambina Islam Aninta &mdash; <a href="Sambina_Aninta.pdf" target="_blank">CV</a></p>
 </footer>
-
-<script>
-// ── Static DNA double helix background ──
-(function () {
-  const canvas = document.getElementById('dna-bg');
-  const header = canvas.parentElement;
-  const dpr = window.devicePixelRatio || 1;
-
-  function render() {
-    const W = header.offsetWidth;
-    const H = header.offsetHeight;
-    canvas.width  = W * dpr;
-    canvas.height = H * dpr;
-    canvas.style.width  = W + 'px';
-    canvas.style.height = H + 'px';
-
-    const ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-
-    const STEPS  = 800;
-    const turns  = 5;
-    const midY   = H * 0.5;
-    const amp    = H * 0.24;
-
-    const pts1 = [], pts2 = [];
-    for (let i = 0; i <= STEPS; i++) {
-      const t = (i / STEPS) * turns * 2 * Math.PI;
-      const x = (i / STEPS) * W;
-      pts1.push({ x, y: midY + amp * Math.sin(t) });
-      pts2.push({ x, y: midY - amp * Math.sin(t) });
-    }
-
-    // Rungs
-    for (let i = 0; i <= STEPS; i += 32) {
-      const p1 = pts1[i], p2 = pts2[i];
-      const spread = Math.abs(p2.y - p1.y) / (2 * amp);
-      if (spread < 0.08) continue;
-      ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.lineTo(p2.x, p2.y);
-      ctx.strokeStyle = `rgba(168, 218, 220, ${(spread * 0.22).toFixed(3)})`;
-      ctx.lineWidth = 1.1;
-      ctx.stroke();
-    }
-
-    // Strand 1 — teal
-    ctx.beginPath();
-    ctx.moveTo(pts1[0].x, pts1[0].y);
-    for (let i = 1; i <= STEPS; i++) ctx.lineTo(pts1[i].x, pts1[i].y);
-    ctx.strokeStyle = 'rgba(168, 218, 220, 0.16)';
-    ctx.lineWidth = 1.8;
-    ctx.lineJoin = 'round';
-    ctx.stroke();
-
-    // Strand 2 — orange
-    ctx.beginPath();
-    ctx.moveTo(pts2[0].x, pts2[0].y);
-    for (let i = 1; i <= STEPS; i++) ctx.lineTo(pts2[i].x, pts2[i].y);
-    ctx.strokeStyle = 'rgba(244, 162, 97, 0.11)';
-    ctx.lineWidth = 1.8;
-    ctx.stroke();
-  }
-
-  document.addEventListener('DOMContentLoaded', render);
-  window.addEventListener('resize', render);
-})();
-
-// ── CV Modal ──
-(function () {
-  const btn   = document.getElementById('cv-btn');
-  const modal = document.getElementById('cv-modal');
-  const close = document.getElementById('cv-close');
-
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-
-  function closeModal() {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  close.addEventListener('click', closeModal);
-  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
-})();
-</script>
 
 </body>
 </html>
