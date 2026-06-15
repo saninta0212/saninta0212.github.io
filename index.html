@@ -225,6 +225,16 @@
 
     .author__urls li a:hover i { color: var(--link); }
 
+    .bluesky-icon {
+      width: 18px;
+      height: 16px;
+      flex-shrink: 0;
+      fill: var(--text-subtle);
+      transition: fill 0.18s;
+    }
+
+    .author__urls li a:hover .bluesky-icon { fill: var(--link); }
+
     /* === Main content === */
     .page__content section { margin-bottom: 2.5rem; }
 
@@ -434,7 +444,7 @@
     <ul class="masthead__menu">
       <li><a href="#about">Home</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#talks">Talks</a></li>
+      <li><a href="talks.html">Talks</a></li>
       <li><a href="teaching.html">Teaching &amp; Leadership</a></li>
       <li><a href="Sambina_Aninta.pdf" target="_blank">CV</a></li>
     </ul>
@@ -490,7 +500,7 @@
         </li>
         <li>
           <a href="https://bsky.app/profile/sambean12.bsky.social" target="_blank" rel="noopener">
-            <i class="fab fa-bluesky"></i> Bluesky
+            <svg class="bluesky-icon" viewBox="0 0 568 501" xmlns="http://www.w3.org/2000/svg"><path d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-121.054 124.361-174.292-31.229-187.342-71.115-2.845-8.344-4.17-12.223-4.191-8.804-.021-3.42-1.346.46-4.191 8.804-13.05 39.886-66.288 195.476-187.342 71.115C26.556 388.56 55.778 323.8 170.653 304.25c-65.72 11.185-139.6-7.295-159.875-79.748C4.945 203.66-5 75.293-5 57.947c0-86.853 76.134-59.558 128.121-24.283z"/></svg> Bluesky
           </a>
         </li>
       </ul>
